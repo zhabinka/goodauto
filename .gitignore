@@ -1,0 +1,10 @@
+.venv/
+.idea/
+.vscode/
+__pycache__/
+staticfiles/
+
+.env
+.python-version
+*.sqlite3
+.coverage
