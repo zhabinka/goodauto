@@ -23,15 +23,13 @@ def init_chrome_webdriver():
 
 def collect_catalog_page_sources(url, pages_count=3):
     driver = init_chrome_webdriver()
-    source_dir = os.path.join(ASSETS_CATALOG_PAGES_PATH)
-
-    os.makedirs(source_dir, exist_ok=True)
+    os.makedirs(ASSETS_CATALOG_PAGES_PATH, exist_ok=True)
 
     try:
         counter = 1
         while counter <= pages_count:
             current_page_url = f'{url}&page={counter}'
-            current_page_source_path = f'{source_dir}/{counter}.html'
+            current_page_source_path = f'{ASSETS_CATALOG_PAGES_PATH}/{counter}.html'
 
             driver.get(url=current_page_url)
             time.sleep(2)
