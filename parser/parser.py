@@ -8,6 +8,7 @@ from selenium.webdriver.chrome.service import Service
 
 BASE_PATH = os.path.abspath(os.path.dirname(__file__))
 ASSETS_PATH = os.path.join(BASE_PATH, 'assets')
+ASSETS_CATALOG_PAGES_PATH = os.path.join(ASSETS_PATH, 'pages')
 CHROME_DRIVER_PATH = os.path.join(BASE_PATH, 'chromedriver')
 CHROME_SERVICE = Service(CHROME_DRIVER_PATH)
 
@@ -22,7 +23,7 @@ def init_chrome_webdriver():
 
 def collect_catalog_page_sources(url, pages_count=3):
     driver = init_chrome_webdriver()
-    source_dir = os.path.join(ASSETS_PATH, 'pages')
+    source_dir = os.path.join(ASSETS_CATALOG_PAGES_PATH)
 
     os.makedirs(source_dir, exist_ok=True)
 
