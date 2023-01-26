@@ -10,6 +10,9 @@ from selenium.webdriver.chrome.service import Service
 BASE_PATH = os.path.abspath(os.path.dirname(__file__))
 ASSETS_PATH = os.path.join(BASE_PATH, 'assets')
 ASSETS_CATALOG_PAGES_PATH = os.path.join(ASSETS_PATH, 'pages')
+ASSETS_CAR_LINKS_PATH = os.path.join(ASSETS_PATH, 'links.json')
+ASSETS_CAR_PAGES_PATH = os.path.join(ASSETS_PATH, 'cars')
+ASSETS_CARS_PATH = os.path.join(ASSETS_PATH, 'cars.json')
 CHROME_DRIVER_PATH = os.path.join(BASE_PATH, 'chromedriver')
 CHROME_SERVICE = Service(CHROME_DRIVER_PATH)
 
@@ -78,5 +81,47 @@ def get_links_auto(dir_path):
         print(f'[SUCCESS] Page {filepath} processed')
 
     # TODO: записать в базу
-    with open(os.path.join(ASSETS_PATH, 'links.json'), 'w') as f:
+    with open(ASSETS_CAR_LINKS_PATH, 'w') as f:
         json.dump(autos, f, indent=4, ensure_ascii=False)
+
+
+def collect_page_car_sources(car_links):
+    cars = []
+    os.makedirs(ASSETS_CAR_PAGES_PATH, exist_ok=True)
+    driver = init_chrome_webdriver()
+
+    try:
+        with open(car_links, 'r') as f:
+            # TODO: читать из базы
+            for car in json.load(f):
+                id = car['id']
+                url = car['url']
+                car_page_source_path = f'{ASSETS_CAR_PAGES_PATH}/{id}.html'
+                car['source_path'] = car_page_source_path
+
+                # TODO: настроить очередь сообщений
+                driver.get(url=url)
+                time.sleep(1)
+
+                with open(car_page_source_path, 'w') as f:
+                    f.write(driver.page_source)
+
+                cars.append({
+                                'id': id,
+                                'url': url,
+                                'source_path': car_page_source_path,
+                            })
+
+                # TODO: добавить логирование
+                print(f'[INFO] Downloaded car to {car_page_source_path}')
+
+    except Exception as e:
+        print(f'[ERROR] {e}')
+    finally:
+        driver.close()
+        driver.quit()
+
+    with open(ASSETS_CARS_PATH, 'w') as f:
+        json.dump(cars, f, indent=4, ensure_ascii=False)
+
+    print(f'[INFO] Downloaded len(cars) cars')
