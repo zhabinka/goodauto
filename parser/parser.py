@@ -32,6 +32,10 @@ def init_chrome_webdriver():
     # test user-agent https://whatmyuseragent.com/
     options.add_argument(f'user-agent={user_agent}')
 
+    # disable webdriver mode
+    # https://intoli.com/blog/not-possible-to-block-chrome-headless/chrome-headless-test.html
+    options.add_argument('--disable-blink-features=AutomationControlled')
+
     return webdriver.Chrome(service=CHROME_SERVICE, options=options)
 
 
