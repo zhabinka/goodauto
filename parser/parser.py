@@ -23,6 +23,7 @@ CATALOG_PATH = '/annonser/hela_sverige/fordon/bilar?cg=1020'
 
 
 def init_chrome_webdriver():
+    # TODO: options.add_argument('--proxy-server=198.199.120.102:8080')
     user_agent = UserAgent(browsers=['chrome']).random
 
     # chromedriver options description
@@ -41,6 +42,8 @@ def init_chrome_webdriver():
 
 def collect_catalog_page_sources(url, pages_count=3):
     driver = init_chrome_webdriver()
+
+    # TODO: подготовить окружение (prepare script)
     os.makedirs(ASSETS_CATALOG_PAGES_PATH, exist_ok=True)
 
     try:
