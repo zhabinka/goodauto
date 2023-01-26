@@ -34,6 +34,32 @@ tests-no-zope = ["hypothesis", "pympler", "pytest (>=4.3.0)", "pytest-xdist", "c
 tests_no_zope = ["hypothesis", "pympler", "pytest (>=4.3.0)", "pytest-xdist", "cloudpickle", "mypy (>=0.971,<0.990)", "pytest-mypy-plugins"]
 
 [[package]]
+name = "beautifulsoup4"
+version = "4.11.1"
+description = "Screen-scraping library"
+category = "main"
+optional = false
+python-versions = ">=3.6.0"
+
+[package.dependencies]
+soupsieve = ">1.2"
+
+[package.extras]
+html5lib = ["html5lib"]
+lxml = ["lxml"]
+
+[[package]]
+name = "bs4"
+version = "0.0.1"
+description = "Dummy package for Beautiful Soup"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+beautifulsoup4 = "*"
+
+[[package]]
 name = "certifi"
 version = "2022.12.7"
 description = "Python package for providing Mozilla's CA Bundle."
@@ -179,6 +205,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "soupsieve"
+version = "2.3.2.post1"
+description = "A modern CSS selector implementation for Beautiful Soup."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "sqlparse"
 version = "0.4.3"
 description = "A non-validating SQL parser."
@@ -255,12 +289,14 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "0abdf37b4313cc35f81a3f57ceb0516b5de2e93f2b84407e42151ece05f2f896"
+content-hash = "4855a4d4c25334cd217177a99957c4717c64af151e7e4335726154dfe84becbe"
 
 [metadata.files]
 asgiref = []
 async-generator = []
 attrs = []
+beautifulsoup4 = []
+bs4 = []
 certifi = []
 cffi = []
 django = []
@@ -278,6 +314,7 @@ python-dotenv = []
 selenium = []
 sniffio = []
 sortedcontainers = []
+soupsieve = []
 sqlparse = []
 trio = []
 trio-websocket = []

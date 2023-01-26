@@ -2,6 +2,7 @@ import time
 import os
 import json
 
+from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
@@ -48,3 +49,34 @@ def collect_catalog_page_sources(url, pages_count=3):
     finally:
         driver.close()
         driver.quit()
+
+
+def get_links_auto(dir_path):
+    files = os.listdir(dir_path)
+    autos = []
+    target_url = 'clc.php'
+
+    for file in files:
+        filepath = os.path.join(dir_path, file)
+        with open(filepath, 'r') as f:
+            source = f.read()
+            page = BeautifulSoup(source, 'lxml')
+            items = page.find_all('div', class_='styled__Wrapper-sc-1kpvi4z-0')
+
+            for item in items:
+                link = item.find('a', class_='styled__StyledTitleLink-sc-1kpvi4z-11').get('href')
+                # expclude target links
+                if target_url in link:
+                    continue
+
+                *_, id = link.split('/')
+                autos.append({
+                                 'id': int(id),
+                                 'url': f'{SOURCE_URL}{link}',
+                             })
+
+        print(f'[SUCCESS] Page {filepath} processed')
+
+    # TODO: записать в базу
+    with open(os.path.join(ASSETS_PATH, 'links.json'), 'w') as f:
+        json.dump(autos, f, indent=4, ensure_ascii=False)
