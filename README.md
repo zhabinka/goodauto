@@ -8,7 +8,7 @@
 
 ### Usage
 
-```
+```bash
 # setup
 make install
 
