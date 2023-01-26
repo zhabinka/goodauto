@@ -37,6 +37,9 @@ def init_chrome_webdriver():
     # https://intoli.com/blog/not-possible-to-block-chrome-headless/chrome-headless-test.html
     options.add_argument('--disable-blink-features=AutomationControlled')
 
+    # use background mode
+    options.add_argument('--headless')
+
     return webdriver.Chrome(service=CHROME_SERVICE, options=options)
 
 
