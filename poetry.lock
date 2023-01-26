@@ -107,6 +107,14 @@ python-versions = ">=3.7"
 test = ["pytest (>=6)"]
 
 [[package]]
+name = "fake-useragent"
+version = "1.1.1"
+description = "Up-to-date simple useragent faker with real world database"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "h11"
 version = "0.14.0"
 description = "A pure-Python, bring-your-own-I/O implementation of HTTP/1.1"
@@ -289,7 +297,7 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "4855a4d4c25334cd217177a99957c4717c64af151e7e4335726154dfe84becbe"
+content-hash = "0a985356308ae4c9972540d227150bb9bfe9a82021250dff71a90ccf68c56452"
 
 [metadata.files]
 asgiref = []
@@ -301,6 +309,7 @@ certifi = []
 cffi = []
 django = []
 exceptiongroup = []
+fake-useragent = []
 h11 = []
 idna = []
 lxml = []

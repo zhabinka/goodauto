@@ -2,9 +2,11 @@ import time
 import os
 import json
 
+from fake_useragent import UserAgent
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 
 
 BASE_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -21,8 +23,16 @@ CATALOG_PATH = '/annonser/hela_sverige/fordon/bilar?cg=1020'
 
 
 def init_chrome_webdriver():
-    # TODO: add header (user-agent etc.)
-    return webdriver.Chrome(service=CHROME_SERVICE)
+    user_agent = UserAgent(browsers=['chrome']).random
+
+    # chromedriver options description
+    # https://peter.sh/experiments/chromium-command-line-switches/
+    options = Options()
+
+    # test user-agent https://whatmyuseragent.com/
+    options.add_argument(f'user-agent={user_agent}')
+
+    return webdriver.Chrome(service=CHROME_SERVICE, options=options)
 
 
 def collect_catalog_page_sources(url, pages_count=3):
