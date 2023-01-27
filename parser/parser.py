@@ -39,6 +39,7 @@ def init_chrome_webdriver():
 
     # use background mode
     options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
 
     return webdriver.Chrome(service=CHROME_SERVICE, options=options)
 
