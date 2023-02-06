@@ -1,0 +1,33 @@
+- hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Install nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+      become: yes
+      notify:
+        - restart nginx
+
+    - name: Copy virtual host file
+      ansible.builtin.copy:
+        src: ../config/nginx/goodauto.by
+        dest: /etc/nginx/sites-available/goodauto.by
+      become: yes
+
+    - name: Enable virtual host
+      ansible.builtin.file:
+        src: /etc/nginx/sites-available/goodauto.by
+        dest: /etc/nginx/sites-enabled/goodauto.by
+        state: link
+      become: yes
+      notify:
+        - Restart nginx
+
+  handlers:
+    - name: Restart nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+      become: yes
