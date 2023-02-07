@@ -7,8 +7,6 @@
         name: nginx
         state: present
       become: yes
-      notify:
-        - restart nginx
 
     - name: Copy virtual host file
       ansible.builtin.copy:
