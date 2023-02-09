@@ -5,10 +5,10 @@ After=network.target
 [Service]
 User=chess
 Group=chess
-WorkingDirectory=/home/chess/www/goodauto.by/goodauto
+WorkingDirectory=/home/chess/www/goodauto.by
 ExecStart=/home/chess/www/goodauto.by/.venv/bin/gunicorn \
   --workers 3 \
-  --bind unix:/home/chess/www/goodauto.by/config/gunicorn/gunicorn.sock config.wsgi:application \
+  --bind unix:/home/chess/www/goodauto.by/config/gunicorn/gunicorn.sock goodauto.wsgi:application \
   --access-logfile /home/chess/www/goodauto.by/logs/gunicorn/access.log \
   --error-logfile /home/chess/www/goodauto.by/logs/gunicorn/error.log
 Restart=on-failure

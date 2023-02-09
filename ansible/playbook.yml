@@ -6,8 +6,9 @@
       ansible.builtin.git:
         repo: git@github.com:zhabinka/goodauto.git
         dest: ~/www/goodauto.by
-        clone: yes
-        update: yes
+        clone: True
+        update: True
+        force: True
       tags: git
 
     - name: install packages in virtualenv
@@ -15,11 +16,14 @@
         requirements: ~/www/goodauto.by/requirements.txt
         virtualenv: ~/www/goodauto.by/.venv
 
-    - name: enable gunicorn service
-      ansible.builtin.file:
-        src: ../config/systemd/gunicorn.service
-        dest: /etc/systemd/system/
-        state: link
+    - name: setup gunicorn service
+      ansible.builtin.shell:
+        cmd: ln -s /home/chess/www/goodauto.by/config/systemd/gunicorn.service /etc/systemd/system
+      # [TODO]: refusing to convert from directory to symlink for /etc/systemd/system/
+      # ansible.builtin.file:
+      #   src: /home/chess/www/goodauto.by/config/systemd/gunicorn.service
+      #   dest: /etc/systemd/system/
+      #   state: link
       become: True
       notify:
         - start gunicorn
@@ -32,4 +36,4 @@
         state: started
         daemon_reload: True
         enabled: True
-      sudo: True
+      become: True
