@@ -8,15 +8,9 @@
         state: present
       become: yes
 
-    - name: Copy virtual host file
-      ansible.builtin.copy:
-        src: ../config/nginx/goodauto.by
-        dest: /etc/nginx/sites-available/goodauto.by
-      become: yes
-
     - name: Enable virtual host
       ansible.builtin.file:
-        src: /etc/nginx/sites-available/goodauto.by
+        src: /home/chess/www/goodauto.by/config/nginx/goodauto.by
         dest: /etc/nginx/sites-enabled/goodauto.by
         state: link
       become: yes

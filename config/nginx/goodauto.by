@@ -1,13 +1,13 @@
 server {
-        listen 80;
-        listen [::]:80;
+    listen 80;
+    server_name goodauto.by www.goodauto.by;
 
-        root /home/chess/www/goodauto.by;
-        index index.test.html;
-
-        server_name goodauto.by www.goodauto.by;
-
-        location / {
-                try_files $uri $uri/ =404;
-        }
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/chess/www/goodauto.by/static;
+    }
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/chess/www/goodauto.by/gunicorn/gunicorn.sock;
+    }
 }
