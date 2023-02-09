@@ -1,0 +1,35 @@
+- hosts: all
+  gather_facts: False
+
+  tasks:
+    - name: clone github repository
+      ansible.builtin.git:
+        repo: git@github.com:zhabinka/goodauto.git
+        dest: ~/www/goodauto.by
+        clone: yes
+        update: yes
+      tags: git
+
+    - name: install packages in virtualenv
+      ansible.builtin.pip:
+        requirements: ~/www/goodauto.by/requirements.txt
+        virtualenv: ~/www/goodauto.by/.venv
+
+    - name: enable gunicorn service
+      ansible.builtin.file:
+        src: ../config/systemd/gunicorn.service
+        dest: /etc/systemd/system/
+        state: link
+      become: True
+      notify:
+        - start gunicorn
+
+  handlers:
+    - name: start gunicorn
+      # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html
+      ansible.builtin.systemd:
+        name: gunicorn
+        state: started
+        daemon_reload: True
+        enabled: True
+      sudo: True

@@ -1,0 +1,17 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=chess
+Group=chess
+WorkingDirectory=/home/chess/www/goodauto.by/goodauto
+ExecStart=/home/chess/www/goodauto.by/.venv/bin/gunicorn \
+  --workers 3 \
+  --bind unix:/home/chess/www/goodauto.by/config/gunicorn/gunicorn.sock config.wsgi:application \
+  --access-logfile /home/chess/www/goodauto.by/logs/gunicorn/access.log \
+  --error-logfile /home/chess/www/goodauto.by/logs/gunicorn/error.log
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
