@@ -16,6 +16,22 @@
         requirements: ~/www/goodauto.by/requirements.txt
         virtualenv: ~/www/goodauto.by/.venv
 
+    - name: create gunicorn socket folder
+      ansible.builtin.file:
+        path: ~/www/goodauto.by/config/gunicorn
+        state: directory
+
+    - name: create gunicorn log dir
+      file:
+        path: ~/www/goodauto.by/logs/gunicorn
+        state: directory
+        recurse: yes
+
+    - name: check gunicorn service file setup
+      stat:
+        path: /etc/systemd/system/gunicorn.service
+      register: link
+
     - name: setup gunicorn service
       ansible.builtin.shell:
         cmd: ln -s /home/chess/www/goodauto.by/config/systemd/gunicorn.service /etc/systemd/system
@@ -24,6 +40,7 @@
       #   src: /home/chess/www/goodauto.by/config/systemd/gunicorn.service
       #   dest: /etc/systemd/system/
       #   state: link
+      when: not link.stat.exists
       become: True
       notify:
         - start gunicorn

@@ -8,6 +8,12 @@
         state: present
       become: yes
 
+    - name: create logs dir
+      file:
+        path: ~/www/goodauto.by/logs/nginx
+        state: directory
+        recurse: yes
+
     - name: Enable virtual host
       ansible.builtin.file:
         src: /home/chess/www/goodauto.by/config/nginx/goodauto.by
