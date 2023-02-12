@@ -19,6 +19,7 @@
         - tmux
         - git
         - curl
+        - cron
         - wget
         - gcc
         - build-essential

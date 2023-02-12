@@ -23,11 +23,14 @@
         path: ~/www/goodauto.by/config/gunicorn
         state: directory
 
-    - name: create gunicorn log dir
+    - name: create log dirs
       file:
-        path: ~/www/goodauto.by/logs/gunicorn
+        path: ~/www/goodauto.by/logs/{{ item }}
         state: directory
         recurse: yes
+      with_items:
+        - gunicorn
+        - cron
 
     - name: check gunicorn service file setup
       stat:
@@ -47,12 +50,21 @@
       notify:
         - start gunicorn
 
+    - name: create an entry like 'date >> <logs>'
+      cron:
+        name: record the current time
+        special_time: 'hourly'
+        job: date >> /home/chess/www/goodauto.by/logs/cron/current_date
+
   handlers:
-    - name: start gunicorn
+    - name: start sevices gunicorn, cron
       # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html
       ansible.builtin.systemd:
-        name: gunicorn
+        name: "{{ item }}"
         state: started
         daemon_reload: True
         enabled: True
+      loop:
+        - gunicorn
+        - cron
       become: True
