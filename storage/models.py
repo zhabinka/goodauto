@@ -21,3 +21,27 @@ class Provider(models.Model):
 
     class Meta:
         db_table = 'providers'
+
+
+class Brand(models.Model):
+    manufacturer = models.CharField(max_length=50)
+    model = models.CharField(max_length=50)
+
+    class Meta():
+        db_table = 'brands'
+        unique_together = ['manufacturer', 'model']
+
+
+class UrlBunch(models.Model):
+    node_url = models.URLField(max_length=255)
+    provider = models.ForeignKey(
+        Provider,
+        on_delete=models.CASCADE,
+    )
+    brand = models.ForeignKey(
+        Brand,
+        on_delete=models.CASCADE,
+    )
+
+    class Meta():
+        db_table = 'url_bunches'
