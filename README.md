@@ -20,4 +20,7 @@ poetry run catalog-handler
 
 # collect car sources
 poetry run car-loader
+
+# load brands
+poetry run python manage.py load_brands
 ```
