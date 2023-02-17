@@ -3,7 +3,7 @@ from goodauto.cars.models import Car
 from storage.models import HtmlStorage, UrlStorage
 
 
-class CrawlFrontier(models.Model):
+class CrawlerFrontier(models.Model):
     url_storage = models.ForeignKey(
         UrlStorage,
         on_delete=models.CASCADE,

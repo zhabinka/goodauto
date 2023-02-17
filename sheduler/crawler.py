@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from django.db import transaction
 
 from sheduler.driver import init_chrome_webdriver
-from sheduler.models import CrawlFrontier
+from sheduler.models import CrawlerFrontier
 from storage.models import HtmlStorage, UrlStorage
 from sheduler.parser import add_parser_task
 from storage import url
@@ -18,7 +18,7 @@ ASSETS_CAR_LINKS_PATH = os.path.join(BASE_PATH, 'links.json')
 def add_crawl_task(url_):
     item = url.to_storage(url_)
     if item:
-        id = CrawlFrontier.objects.create(url_storage=item)
+        id = CrawlerFrontier.objects.create(url_storage=item)
         print(f'Add {item.external_url} in sheduler')
         return id
 
@@ -35,7 +35,7 @@ def collect():
 
 def scrapy():
     driver = init_chrome_webdriver()
-    tasks = CrawlFrontier.objects.all()
+    tasks = CrawlerFrontier.objects.all()
 
     try:
         for task in tasks[:10]:
