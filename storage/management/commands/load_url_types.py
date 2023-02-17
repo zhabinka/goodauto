@@ -17,8 +17,8 @@ class Command(BaseCommand):
             (2, 'bunch'),
         ]
 
-        for type_code, type_name in url_types:
-            type = UrlType(name=type_name, code=type_code)
+        for _, type_name in url_types:
+            type = UrlType(name=type_name)
             type.save()
 
         print("[SUCCESS] All types loaded")
