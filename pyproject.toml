@@ -11,7 +11,7 @@ car-loader = "parser.scripts.car_loader:main"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-Django = "^4.1.5"
+Django = "^4.1.7"
 python-dotenv = "^0.21.1"
 bs4 = "^0.0.1"
 lxml = "^4.9.2"
