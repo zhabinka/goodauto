@@ -1,9 +1,29 @@
 from django.db import models
 
 
+class UrlType(models.Model):
+    name = models.CharField(max_length=15)
+
+    class Meta:
+        db_table = 'url_types'
+
+
+class Provider(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    url = models.URLField(max_length=255, unique=True)
+
+    class Meta:
+        db_table = 'providers'
+
+
 class UrlStorage(models.Model):
     external_url = models.URLField(max_length=255, unique=True)
     processed = models.BooleanField(default=False)
+    provider = models.ForeignKey(
+        Provider,
+        on_delete=models.CASCADE,
+        default=None,
+    )
 
 
 class HtmlStorage(models.Model):
@@ -13,14 +33,16 @@ class HtmlStorage(models.Model):
     )
     source_html = models.TextField()
     processed = models.BooleanField(default=False)
-
-
-class Provider(models.Model):
-    name = models.CharField(max_length=255, unique=True)
-    url = models.URLField(max_length=255, unique=True)
-
-    class Meta:
-        db_table = 'providers'
+    provider = models.ForeignKey(
+        Provider,
+        on_delete=models.CASCADE,
+        default=None,
+    )
+    url_type = models.ForeignKey(
+        UrlType,
+        on_delete=models.PROTECT,
+        default=None,
+    )
 
 
 class Brand(models.Model):
@@ -45,10 +67,3 @@ class UrlBunchStorage(models.Model):
 
     class Meta():
         db_table = 'url_bunche_storage'
-
-
-class UrlType(models.Model):
-    name = models.CharField(max_length=15)
-
-    class Meta:
-        db_table = 'url_types'
