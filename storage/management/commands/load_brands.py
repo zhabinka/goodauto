@@ -8,7 +8,7 @@ from storage.models import Brand
 BASE_PATH = os.path.abspath(os.path.dirname(__file__))
 ASSETS_CAR_MODELS_PATH = os.path.join(BASE_PATH, '../../fixtures/cars.csv')
 
-
+# https://adityakedawat.medium.com/importing-csv-file-into-django-models-using-django-management-command-716eda305e61
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
