@@ -25,6 +25,9 @@ class UrlStorage(models.Model):
         default=None,
     )
 
+    class Meta:
+        db_table = 'url_storage'
+
 
 class HtmlStorage(models.Model):
     url_storage = models.ForeignKey(
@@ -43,6 +46,9 @@ class HtmlStorage(models.Model):
         on_delete=models.PROTECT,
         default=None,
     )
+
+    class Meta:
+        db_table = 'html_storage'
 
 
 class Brand(models.Model):

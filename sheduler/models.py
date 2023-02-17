@@ -10,6 +10,8 @@ class CrawlFrontier(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        db_table = 'crawl_frontier'
 
 class ParserFrontier(models.Model):
     car = models.ForeignKey(
@@ -21,3 +23,6 @@ class ParserFrontier(models.Model):
         on_delete=models.CASCADE,
     )
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'parser_frontier'
