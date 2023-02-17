@@ -31,3 +31,5 @@ migrate:
 shell:
 	poetry run python manage.py shell
 
+dbshell:
+	poetry run python manage.py dbshell
