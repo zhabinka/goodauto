@@ -32,7 +32,7 @@ class Brand(models.Model):
         unique_together = ['manufacturer', 'model']
 
 
-class UrlBunch(models.Model):
+class UrlBunchStorage(models.Model):
     node_url = models.URLField(max_length=255)
     provider = models.ForeignKey(
         Provider,
@@ -44,4 +44,4 @@ class UrlBunch(models.Model):
     )
 
     class Meta():
-        db_table = 'url_bunches'
+        db_table = 'url_bunche_storage'
