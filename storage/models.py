@@ -45,3 +45,10 @@ class UrlBunchStorage(models.Model):
 
     class Meta():
         db_table = 'url_bunche_storage'
+
+
+class UrlType(models.Model):
+    name = models.CharField(max_length=15)
+
+    class Meta:
+        db_table = 'url_types'
