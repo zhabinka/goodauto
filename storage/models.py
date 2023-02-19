@@ -43,6 +43,7 @@ class UrlBunchStorage(models.Model):
         on_delete=models.CASCADE,
         default='',
     )
+    processed = models.BooleanField(default=False)
 
     class Meta():
         db_table = 'url_bunch_storage'
