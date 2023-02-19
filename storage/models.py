@@ -1,13 +1,6 @@
 from django.db import models
 
 
-class UrlType(models.Model):
-    name = models.CharField(max_length=15)
-
-    class Meta:
-        db_table = 'url_types'
-
-
 class Provider(models.Model):
     name = models.CharField(max_length=255, unique=True)
     url = models.URLField(max_length=255, unique=True)
@@ -39,11 +32,6 @@ class HtmlStorage(models.Model):
     provider = models.ForeignKey(
         Provider,
         on_delete=models.CASCADE,
-        default=None,
-    )
-    url_type = models.ForeignKey(
-        UrlType,
-        on_delete=models.PROTECT,
         default=None,
     )
 
