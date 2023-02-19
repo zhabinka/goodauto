@@ -9,7 +9,7 @@ class UrlStorage(models.Model):
 
     external_url = models.URLField(max_length=255, unique=True)
     processed = models.BooleanField(default=False)
-    type_url = models.PositiveSmallIntegerField(choices=Type.choices, default=Type.SINGLE)
+    type = models.PositiveSmallIntegerField(choices=Type.choices, default=Type.SINGLE)
 
     class Meta:
         db_table = 'url_storage'
