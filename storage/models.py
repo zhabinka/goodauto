@@ -16,7 +16,7 @@ class UrlStorage(models.Model):
 
 
 class HtmlStorage(models.Model):
-    url_storage = models.ForeignKey(
+    url_storage = models.OneToOneField(
         UrlStorage,
         on_delete=models.CASCADE,
     )

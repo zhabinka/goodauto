@@ -3,12 +3,12 @@ from storage.models import HtmlStorage, UrlStorage
 
 
 class Car(models.Model):
-    url_storage = models.ForeignKey(
+    url_storage = models.OneToOneField(
         UrlStorage,
         on_delete=models.PROTECT,
         related_name='url',
     )
-    html_storage = models.ForeignKey(
+    html_storage = models.OneToOneField(
         HtmlStorage,
         on_delete=models.PROTECT,
         related_name='html',
