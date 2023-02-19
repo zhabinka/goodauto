@@ -27,21 +27,26 @@ class HtmlStorage(models.Model):
         db_table = 'html_storage'
 
 
-class Brand(models.Model):
-    manufacturer = models.CharField(max_length=50)
+class CarModel(models.Model):
+    brand = models.CharField(max_length=50)
     model = models.CharField(max_length=50)
 
     class Meta():
-        db_table = 'brands'
-        unique_together = ['manufacturer', 'model']
+        db_table = 'car_models'
+        unique_together = ['brand', 'model']
 
 
 class UrlBunchStorage(models.Model):
     node_url = models.URLField(max_length=255)
-    brand = models.ForeignKey(
-        Brand,
+    car_model = models.ForeignKey(
+        CarModel,
         on_delete=models.CASCADE,
+        default='',
     )
 
     class Meta():
         db_table = 'url_bunche_storage'
+
+
+class HtmlBunchStorage(models.Model):
+    
