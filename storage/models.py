@@ -38,10 +38,9 @@ class CarModel(models.Model):
 
 class UrlBunchStorage(models.Model):
     node_url = models.URLField(max_length=255)
-    car_model = models.ForeignKey(
+    car_model = models.OneToOneField(
         CarModel,
         on_delete=models.CASCADE,
-        default='',
     )
     processed = models.BooleanField(default=False)
 
@@ -50,7 +49,7 @@ class UrlBunchStorage(models.Model):
 
 
 class HtmlBunchStorage(models.Model):
-    url_bunch_storage = models.ForeignKey(
+    url_bunch_storage = models.OneToOneField(
         UrlBunchStorage,
         on_delete=models.CASCADE,
     )
