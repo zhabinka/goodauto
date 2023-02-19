@@ -36,5 +36,3 @@ dbshell:
 
 load:
 	poetry run python manage.py load_brands
-	poetry run python manage.py load_url_types
-	poetry run python manage.py load_providers

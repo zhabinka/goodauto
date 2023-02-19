@@ -2,7 +2,7 @@ import os
 from csv import DictReader
 from django.core.management import BaseCommand
 
-from storage.models import Brand
+from storage.models import CarModel
 
 
 BASE_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -12,7 +12,7 @@ ASSETS_CAR_MODELS_PATH = os.path.join(BASE_PATH, '../../fixtures/cars.csv')
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        if Brand.objects.exists():
+        if CarModel.objects.exists():
             print('[INFO] Data already loaded...exiting.')
             return
 
@@ -21,8 +21,8 @@ class Command(BaseCommand):
         with open(ASSETS_CAR_MODELS_PATH, newline='') as csvfile:
             reader = DictReader(csvfile,  delimiter=';')
             for row in reader:
-                car = Brand(
-                    manufacturer=row['mark'],
+                car = CarModel(
+                    brand=row['mark'],
                     model=row['model'],
                 )
                 car.save()
