@@ -46,15 +46,15 @@ class UrlBunchStorage(models.Model):
 
     class Meta():
         db_table = 'url_bunch_storage'
-#
-#
-# class HtmlBunchStorage(models.Model):
-#     url_bunch_storage = models.ForeignKey(
-#         UrlBunchStorage,
-#         on_delete=models.CASCADE,
-#     )
-#     source_html = models.TextField
-#     processed = models.BooleanField(default=False)
-#
-#     class Meta:
-#         db_table = 'url_bunch_storage'
+
+
+class HtmlBunchStorage(models.Model):
+    url_bunch_storage = models.ForeignKey(
+        UrlBunchStorage,
+        on_delete=models.CASCADE,
+    )
+    source_html = models.TextField
+    processed = models.BooleanField(default=False)
+
+    class Meta:
+        db_table = 'html_bunch_storage'
