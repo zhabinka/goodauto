@@ -1,11 +1,13 @@
 import re
+import urllib
 
 from bs4 import BeautifulSoup
+from url_normalize import url_normalize
 
 from django.db import transaction
 
 from sheduler.models import ParserFrontier
-from storage.models import HtmlStorage
+from storage.models import HtmlBunchStorage, HtmlStorage, UrlStorage
 from goodauto.cars.views import to_storage
 
 
@@ -21,6 +23,9 @@ def add_parser_task(html_storage_item):
 
 
 def parse():
+    # car.find('a')['href']
+    # car.find('h3').find('span').text
+
     tasks = ParserFrontier.objects.all()
     for task in tasks[:2]:
         html = task.html_storage.source_html
@@ -50,3 +55,8 @@ def parse():
             print(f'[] Removed task')
 
     print(f'[INFO] All task complited')
+
+
+def normalize(path):
+    url = urllib.parse.urljoin('//www.adesa.eu', path)
+    return url_normalize(url)
