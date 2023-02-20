@@ -27,27 +27,25 @@ def add_crawler_tasks():
         print(f'[{created}] {url} in sheduler {task}')
 
 
-def scrapy():
+def scrapy(limit=2):
     driver = init_chrome_webdriver()
-    tasks = CrawlerFrontier.objects.all()
+    tasks = CrawlerFrontier.objects.all()[:limit]
 
     try:
-        for task in tasks[:10]:
+        for task in tasks:
             url = task.url_storage.external_url
             driver.get(url=url)
-            time.sleep(10)
 
-            item, _ = HtmlStorage.objects.get_or_create(
+            html_storage, _ = HtmlStorage.objects.get_or_create(
                 url_storage=task.url_storage
             )
 
             page = BeautifulSoup(driver.page_source, 'lxml')
-            useful_html = page.select('article[class*=AdMotor__Article]')
+            useful_html = page.select('div[class*=cardetail-container]')
 
-            item.source_html = useful_html
-            item.save()
-
-            add_parser_task(item)
+            html_storage.source_html = useful_html
+            html_storage.processed = False
+            html_storage.save()
 
             print(f'[INFO] Downloaded html from {url}')
 
@@ -58,6 +56,8 @@ def scrapy():
                 task.delete()
                 url_storage.save()
                 print(f'[INFO] Removed {url} from sheduler')
+
+            time.sleep(random.randint(8, 12))
 
     except Exception as e:
         print(f'[ERROR] {e}')
