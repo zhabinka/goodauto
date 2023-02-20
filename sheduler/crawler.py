@@ -13,27 +13,18 @@ from sheduler.driver import init_chrome_webdriver
 from sheduler.models import CrawlerFrontier
 from storage.models import HtmlStorage, UrlBunchStorage, UrlStorage, HtmlBunchStorage
 from sheduler.parser import add_parser_task
-from storage import url
-
-BASE_PATH = os.path.abspath(os.path.dirname(__file__))
-ASSETS_CAR_LINKS_PATH = os.path.join(BASE_PATH, 'links.json')
-
-def add_crawl_task(url_):
-    item = url.to_storage(url_)
-    if item:
-        id = CrawlerFrontier.objects.create(url_storage=item)
-        print(f'Add {item.external_url} in sheduler')
-        return id
 
 
-def collect():
-    with open(ASSETS_CAR_LINKS_PATH, 'r') as f:
-        cars = json.load(f)
 
-    for car in cars[:10]:
-        url_ = car['url']
-        if url.check(url_):
-            add_crawl_task(url_)
+def add_crawler_tasks():
+    car_urls = UrlStorage.objects.filter(processed=False)
+
+    for car_url in car_urls:
+        url = car_url.external_url
+        task, created = CrawlerFrontier.objects.get_or_create(
+            url_storage=car_url,
+        )
+        print(f'[{created}] {url} in sheduler {task}')
 
 
 def scrapy():

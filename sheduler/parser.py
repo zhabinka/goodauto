@@ -9,6 +9,7 @@ from django.db import transaction
 from sheduler.models import ParserFrontier
 from storage.models import HtmlBunchStorage, HtmlStorage, UrlStorage
 from goodauto.cars.views import to_storage
+from storage.url import check
 
 
 def add_parser_task(html_storage_item):
@@ -70,6 +71,11 @@ def parse_bunch(bunch):
     for car in soup.find_all('section', class_=re.compile('CarCard')):
         path = car.find('a')['href']
         url = normalize(path)
+
+        # URLs filter
+        if not check(url):
+            print(f'[INFO] Url {url} does not match')
+            continue
 
         # Было в отдельной функции to_storage (to_sheduler)
         url_storage, created = UrlStorage.objects.get_or_create(
