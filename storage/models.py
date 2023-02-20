@@ -1,11 +1,6 @@
 from django.db import models
 
 
-class Type(models.IntegerChoices):
-    SINGLE = 1, 'single'
-    BUNCH = 2, 'bunch'
-
-
 class CarModel(models.Model):
     brand = models.CharField(max_length=50)
     model = models.CharField(max_length=50)
