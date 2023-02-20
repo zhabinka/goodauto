@@ -57,6 +57,35 @@ def parse():
     print(f'[INFO] All task complited')
 
 
+def parse_bunches():
+    for bunch in HtmlBunchStorage.objects.all():
+        parse_bunch(bunch)
+        car_model=bunch.url_bunch_storage.car_model,
+        print(f'[Success] All cars {car_model[0]} downloaded')
+
+
+def parse_bunch(bunch):
+    soup = BeautifulSoup(bunch.source_html, 'lxml')
+
+    for car in soup.find_all('section', class_=re.compile('CarCard')):
+        path = car.find('a')['href']
+        url = normalize(path)
+
+        # Было в отдельной функции to_storage (to_sheduler)
+        url_storage, created = UrlStorage.objects.get_or_create(
+            external_url=url,
+            # Может стоит сделать поле необязательным?
+            car_model=bunch.url_bunch_storage.car_model,
+        )
+        if created:
+            print(f'ссылка {url_storage.id} только что создана')
+        else:
+            print(f'ссылка {url_storage.id} уже есть в хранилище')
+
+    bunch.processed=True
+    bunch.save()
+
+
 def normalize(path):
     url = urllib.parse.urljoin('//www.adesa.eu', path)
     return url_normalize(url)
