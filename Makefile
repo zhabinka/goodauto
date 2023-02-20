@@ -28,6 +28,8 @@ migrations:
 migrate:
 	poetry run python manage.py migrate
 
+# TODO: https://github.com/django-extensions/django-extensions/blob/main/docs/shell_plus.rst#additional-imports
+# https://stackoverflow.com/questions/3772260/how-to-reload-modules-in-django-shell
 shell:
 	poetry run python manage.py shell_plus --ipython
 
