@@ -26,6 +26,7 @@ def init_chrome_webdriver():
     options.add_argument('--disable-blink-features=AutomationControlled')
 
     # use background mode
+    options.add_argument('--start-maximized')
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
 
