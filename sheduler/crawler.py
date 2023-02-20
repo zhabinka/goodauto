@@ -12,8 +12,6 @@ from django.db import transaction
 from sheduler.driver import init_chrome_webdriver
 from sheduler.models import CrawlerFrontier
 from storage.models import HtmlStorage, UrlBunchStorage, UrlStorage, HtmlBunchStorage
-from sheduler.parser import add_parser_task
-
 
 
 def add_crawler_tasks():

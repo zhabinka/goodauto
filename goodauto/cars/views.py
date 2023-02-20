@@ -15,5 +15,6 @@ def to_storage(html_storage):
     item, _ = Car.objects.get_or_create(
         html_storage=html_storage,
         url_storage=html_storage.url_storage,
+        car_model=html_storage.url_storage.car_model
     )
     return item

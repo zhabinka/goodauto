@@ -12,15 +12,16 @@ from goodauto.cars.views import to_storage
 from storage.url import check
 
 
-def add_parser_task(html_storage_item):
-    car = to_storage(html_storage_item)
+def add_parser_tasks():
+    html_storages = HtmlStorage.objects.filter(processed=False)
 
-    id = ParserFrontier.objects.create(
-        car=car,
-        html_storage=html_storage_item,
-    )
-    print(f'Add car.id={car.id} in sheduler (id={id})')
-    return id
+    for html_storage in html_storages:
+        car = to_storage(html_storage)
+        task, created = ParserFrontier.objects.get_or_create(
+            car=car,
+            html_storage=html_storage,
+        )
+        print(f'[Created: {created}] {car} in sheduler {task}')
 
 
 def parse():
