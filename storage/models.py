@@ -52,7 +52,7 @@ class HtmlBunchStorage(models.Model):
         UrlBunchStorage,
         on_delete=models.CASCADE,
     )
-    source_html = models.TextField
+    source_html = models.TextField()
     processed = models.BooleanField(default=False)
 
     class Meta:
