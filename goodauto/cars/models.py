@@ -25,6 +25,7 @@ class Car(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     processed = models.BooleanField(default=False)
+    closed = models.BooleanField(default=False)
 
     # no
     drivable = models.TextField(null=True, blank=True)
