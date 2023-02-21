@@ -52,7 +52,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="car",
             name="doors",
-            field=models.PositiveSmallIntegerField(default=""),
+            field=models.PositiveSmallIntegerField(default=0),
             preserve_default=False,
         ),
         migrations.AddField(
