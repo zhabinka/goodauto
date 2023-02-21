@@ -135,3 +135,9 @@ IPYTHON_ARGUMENTS = [
     "-c=%load_ext autoreload\n%autoreload 2",
     "-i",
 ]
+
+SHELL_PLUS_IMPORTS = [
+    'from sheduler.parser import *',
+    'from sheduler.crawler import *',
+    'from storage.url import *',
+]
