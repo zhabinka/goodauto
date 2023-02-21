@@ -20,7 +20,7 @@ class Car(models.Model):
         CarModel,
         on_delete=models.CASCADE,
     )
-    price = models.IntegerField(db_index=True, null=True)
+    price = models.DecimalField(db_index=True, null=True, max_digits=7, decimal_places=0)
     external_id = models.IntegerField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
