@@ -26,36 +26,38 @@ class Car(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     processed = models.BooleanField(default=False)
 
+    # no
     drivable = models.TextField(null=True, blank=True)
-    model_year = models.PositiveSmallIntegerField()
-    first_registration = models.CharField(max_length=20)
-    mileage = models.DecimalField(max_digits=7, decimal_places=0)
+
+    model_year = models.PositiveSmallIntegerField(null=True, blank=True,)
+    first_registration = models.CharField(null=True, blank=True, max_length=20)
+    mileage = models.DecimalField(null=True, blank=True, max_digits=7, decimal_places=0)
 
     # choice
-    fuel_type = models.CharField(max_length=20)
-    transmission_type = models.CharField(max_length=50)
-    four_wheel_drive = models.CharField(max_length=20)
-    co2_emission_standard = models.CharField(max_length=10)
+    fuel_type = models.CharField(null=True, blank=True, max_length=20)
+    transmission_type = models.CharField(null=True, blank=True, max_length=50)
+    four_wheel_drive = models.CharField(null=True, blank=True, max_length=20)
+    co2_emission_standard = models.CharField(null=True, blank=True, max_length=10)
 
-    co2_emission = models.CharField(max_length=20)
-    power = models.CharField(max_length=20)
-    engine_size = models.CharField(max_length=20)
-    body_type = models.CharField(max_length=20)
-    doors =  models.PositiveSmallIntegerField()
-    number_of_seats = models.PositiveSmallIntegerField()
-    number_of_keys = models.PositiveSmallIntegerField()
-    paint = models.CharField(max_length=20)
-    interior_colour = models.CharField(max_length=20)
-
-    # choice
-    vat = models.CharField(max_length=20)
-    registration_documents = models.CharField(max_length=20)
-    coc = models.CharField(max_length=20)
+    co2_emission = models.CharField(null=True, blank=True, max_length=20)
+    power = models.CharField(null=True, blank=True, max_length=20)
+    engine_size = models.CharField(null=True, blank=True, max_length=20)
+    body_type = models.CharField(null=True, blank=True, max_length=20)
+    doors =  models.PositiveSmallIntegerField(null=True, blank=True)
+    number_of_seats = models.PositiveSmallIntegerField(null=True, blank=True)
+    number_of_keys = models.PositiveSmallIntegerField(null=True, blank=True)
+    paint = models.CharField(null=True, blank=True, max_length=20)
+    interior_colour = models.CharField(null=True, blank=True, max_length=20)
 
     # choice
-    pickup_location = models.CharField(max_length=255)
-    origin_country = models.CharField(max_length=30)
-    selling_office = models.CharField(max_length=30)
+    vat = models.CharField(null=True, blank=True, max_length=20)
+    registration_documents = models.CharField(null=True, blank=True, max_length=20)
+    coc = models.CharField(null=True, blank=True, max_length=20)
+
+    # choice
+    pickup_location = models.CharField(null=True, blank=True, max_length=255)
+    origin_country = models.CharField(null=True, blank=True, max_length=30)
+    selling_office = models.CharField(null=True, blank=True, max_length=30)
 
     high_value_equipment = models.TextField(null=True, blank=True)
     additional_options = models.TextField(null=True, blank=True)
