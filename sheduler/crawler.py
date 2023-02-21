@@ -2,6 +2,7 @@ import os
 import json
 import time
 import random
+import re
 
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
@@ -33,15 +34,16 @@ def scrapy(limit=2):
         for task in tasks:
             url = task.url_storage.external_url
             driver.get(url=url)
+            time.sleep(random.randint(8, 12))
 
             html_storage, _ = HtmlStorage.objects.get_or_create(
                 url_storage=task.url_storage
             )
 
-            page = BeautifulSoup(driver.page_source, 'lxml')
-            useful_html = page.select('div[class*=cardetail-container]')
+            soup = BeautifulSoup(driver.page_source, 'lxml')
+            useful_html = soup.find('div', class_=re.compile('cardetail-container'))
 
-            html_storage.source_html = useful_html
+            html_storage.source_html = str(useful_html)
             html_storage.processed = False
             html_storage.save()
 
@@ -54,8 +56,6 @@ def scrapy(limit=2):
                 task.delete()
                 url_storage.save()
                 print(f'[INFO] Removed {url} from sheduler')
-
-            time.sleep(random.randint(8, 12))
 
     except Exception as e:
         print(f'[ERROR] {e}')
