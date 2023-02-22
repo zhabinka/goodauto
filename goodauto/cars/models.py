@@ -7,7 +7,7 @@ from storage.models import CarModel, HtmlStorage, UrlStorage
 class Car(models.Model):
     url_storage = models.OneToOneField(
         UrlStorage,
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         related_name='url',
     )
     html_storage = models.OneToOneField(
