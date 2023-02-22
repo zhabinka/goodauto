@@ -1,6 +1,9 @@
 install:
 	poetry install
 
+createsuperuser:
+	poetry run python manage.py createsuperuser --noinput
+
 run:
 	poetry run python manage.py runserver
 

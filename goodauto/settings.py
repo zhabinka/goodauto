@@ -142,3 +142,7 @@ SHELL_PLUS_IMPORTS = [
     'from storage.url import *',
     'from goodauto.cars.views import *',
 ]
+
+DJANGO_SUPERUSER_USERNAME = os.getenv('DJANGO_SUPERUSER_USERNAME')
+DJANGO_SUPERUSER_PASSWORD = os.getenv('DJANGO_SUPERUSER_PASSWORD')
+DJANGO_SUPERUSER_EMAIL = os.getenv('DJANGO_SUPERUSER_EMAIL')
