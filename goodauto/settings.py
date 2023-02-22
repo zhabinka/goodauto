@@ -140,4 +140,5 @@ SHELL_PLUS_IMPORTS = [
     'from sheduler.parser import *',
     'from sheduler.crawler import *',
     'from storage.url import *',
+    'from goodauto.cars.views import *',
 ]
