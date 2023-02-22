@@ -5,9 +5,6 @@ description = ""
 authors = ["Sergey Karpuk <sergeykarpuk@yandex.by>"]
 
 [tool.poetry.scripts]
-catalog-loader = "parser.scripts.catalog_loader:main"
-catalog-handler = "parser.scripts.catalog_handler:main"
-car-loader = "parser.scripts.car_loader:main"
 
 [tool.poetry.dependencies]
 python = "^3.10"
