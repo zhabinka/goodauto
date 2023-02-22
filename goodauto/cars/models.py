@@ -60,6 +60,7 @@ class Car(models.Model):
     origin_country = models.CharField(null=True, blank=True, max_length=30)
     selling_office = models.CharField(null=True, blank=True, max_length=30)
 
+    equipment = models.TextField(null=True, blank=True)
     high_value_equipment = models.TextField(null=True, blank=True)
     additional_options = models.TextField(null=True, blank=True)
     accessories = models.TextField(null=True, blank=True)
