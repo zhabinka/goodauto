@@ -42,8 +42,9 @@ def parse(limit=2):
             h1 = soup.find('h1')
             name, *_ = h1.text.split(' - ')
             car.name = name
-            price_raw = soup.find('div', class_='rc-BiddingAdvisorPanel').find('div', class_='col')
-            car.price =  pull_numbers(price_raw)
+            price_block = soup.find('div', class_='rc-BiddingAdvisorPanel')
+            if price_block :
+                car.price =  pull_numbers(price_block.find('div', class_='col'))
             # external_id = soup.select('div[class*=uitest-refnr]')
             # car.external_id = pull_numbers(external_id.text)
             model_year_raw = soup.find('div', {'data-attr': 'car-model-year'})
