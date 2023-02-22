@@ -112,4 +112,4 @@ def scrapy_bunch(bunch):
     finally:
         driver.close()
         driver.quit()
-        print(f'[SUCCESS] All bunches downloaded')
+        print(f'[SUCCESS] All bunches for {bunch.car_model.brand} {bunch.car_model.model} downloaded')
