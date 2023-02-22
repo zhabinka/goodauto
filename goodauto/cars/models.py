@@ -12,7 +12,7 @@ class Car(models.Model):
     )
     html_storage = models.OneToOneField(
         HtmlStorage,
-        on_delete=models.PROTECT,
+        on_delete=models.RESTRICT,
         related_name='html',
     )
     name = models.CharField(max_length=255, blank=True)
