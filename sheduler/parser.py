@@ -37,8 +37,8 @@ def parse(limit=2):
         car = Car.objects.get(id=task.car.id)
         html_storage = HtmlStorage.objects.get(id=task.html_storage.id)
         soup = BeautifulSoup(html_storage.source_html, 'lxml')
-        print(html_storage.url_storage.external_url)
-        if not soup.find('div', class_='rc-AuctionClosedPanel'):
+        # TODO: Учитывать статус аукциона (закрыт, продан)
+        if not soup.find('div', class_='rc-AuctionClosedPanel') and not soup.find('div', class_='rc-SoldCarPanel'):
             h1 = soup.find('h1')
             name, *_ = h1.text.split(' - ')
             car.name = name
