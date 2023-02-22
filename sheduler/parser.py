@@ -8,6 +8,7 @@ from django.db import transaction
 
 from sheduler.models import ParserFrontier
 from storage.models import HtmlBunchStorage, HtmlStorage, UrlStorage
+from goodauto.cars.models import Car
 from goodauto.cars.views import to_storage
 from storage.url import check
 
@@ -21,42 +22,93 @@ def add_parser_tasks():
             car=car,
             html_storage=html_storage,
         )
-        print(f'[Created: {created}] {car} in sheduler {task}')
+        print(f'[Task created: {created}] {car} in sheduler {task}')
 
 
-def parse():
-    # car.find('a')['href']
-    # car.find('h3').find('span').text
+def pull_numbers(bs):
+    text = bs.text if bs else '0'
+    return int(re.sub('[^0-9]', '', text))
 
-    tasks = ParserFrontier.objects.all()
-    for task in tasks[:2]:
-        html = task.html_storage.source_html
-        page = BeautifulSoup(html, 'lxml')
-        price_source = page.select('div[class*=PriceWrapper]')
-        if price_source:
-            price = page.select('div[class*=PriceWrapper]')[0].find('div')
-            title = page.find('h1')
-            item = task.car
-            item.price = int(re.sub('[^0-9]', '', price.text))
-            item.name = title.text
-            item.url_storage = task.html_storage.url_storage
-            print(item)
-            print(price)
-            print(title)
-            print(task.html_storage.url_storage)
-            item.save()
 
-        # html_storage = HtmlStorage.objects.get(source_html=html)
-        html_storage = task.html_storage
-        html_storage.processed = True
+def parse(limit=2):
+    tasks = ParserFrontier.objects.all()[:limit]
+
+    for task in tasks:
+        car = Car.objects.get(id=task.car.id)
+        html_storage = HtmlStorage.objects.get(id=task.html_storage.id)
+        soup = BeautifulSoup(html_storage.source_html, 'lxml')
+        print(html_storage.url_storage.external_url)
+        if not soup.find('div', class_='rc-AuctionClosedPanel'):
+            h1 = soup.find('h1')
+            name, *_ = h1.text.split(' - ')
+            car.name = name
+            price_raw = soup.find('div', class_='rc-BiddingAdvisorPanel').find('div', class_='col')
+            car.price =  pull_numbers(price_raw)
+            # external_id = soup.select('div[class*=uitest-refnr]')
+            # car.external_id = pull_numbers(external_id.text)
+            model_year_raw = soup.find('div', {'data-attr': 'car-model-year'})
+            car.model_year = pull_numbers(model_year_raw)
+            car.first_registration = soup.find('div', {'data-attr': 'car-first-registration'}).text
+            mileage_raw = soup.find('div', {'data-attr': 'car-mileage'})
+            car.mileage = pull_numbers(mileage_raw)
+            car.fuel_type = soup.find('div', {'data-attr': 'car-fuel'}).text
+            car.transmission_type = soup.find('div', {'data-attr': 'car-transmission'}).text
+
+            # Не у всех авто
+            # four_wheel_drive = soup.find('div', {'data-attr': 'car-fuel'}).text
+            # co2_emission_standard, co2_emission = soup.find_all('div', {'data-attr': 'car-emission'})
+            # car.co2_emission_standard = co2_emission_standard.text
+            # car.co2_emission = co2_emission.text
+
+            car.power = soup.find('div', {'data-attr': 'car-kw'}).text
+            car.engine_size = soup.find('div', {'data-attr': 'car-engine'}).text
+            car.body_type = soup.find('div', {'data-attr': 'car-body'}).text
+            doors_count_raw = soup.find('div', {'data-attr': 'car-doors'})
+            car.doors = pull_numbers(doors_count_raw)
+            seats_count_raw = soup.find('div', {'data-attr': 'car-places'})
+            car.seats_count = pull_numbers(seats_count_raw)
+
+            # car.keys_count = soup.find('div', {'data-attr': 'car-fuel'}).text
+            car.paint = soup.find('div', {'data-attr': 'car-paint'}).text
+            interior_colour_raw = soup.find('div', {'data-attr': 'car-interior'})
+            if interior_colour_raw:
+                car.interior_colour = interior_colour_raw.text
+
+            # car.vat = soup.find('div', {'data-attr': 'car-fuel'}).text
+            # car.registration_documents = soup.find('div', {'data-attr': 'car-fuel'}).text
+            # car.coc = soup.find('div', {'data-attr': 'car-fuel'}).text
+            # car.pickup_location = soup.find('div', {'data-attr': 'car-fuel'}).text
+            # car.origin_country = soup.find('div', {'data-attr': 'car-fuel'}).text
+            # car.selling_office = soup.find('div', {'data-attr': 'car-fuel'}).text
+            # car.high_value_equipment = soup.find('div', {'data-attr': 'car-fuel'}).text
+            # car.additional_options = soup.find('div', {'data-attr': 'car-fuel'}).text
+            # car.accessories = soup.find('div', {'data-attr': 'car-fuel'}).text
+            # car.damage = soup.find('div', {'data-attr': 'car-fuel'}).text
+            equipment_raw = soup.find('div', class_='rc-CarEquipment')
+            equipment = []
+
+            for item in equipment_raw.find_all('li'):
+                content = item.text
+                equipment.append(f'<li>{content.strip()}</li>')
+
+            car.equipment = f'<ul>{"".join(equipment)}</ul>'
+
+            car.save()
+            print(f'[SUCCESS] Авто {car.name} ({car.id}) обработано {html_storage.url_storage.external_url}')
+        else:
+            car.closed = True
+            car.save()
+            print(f'[FAIL] Аукцион закрыт {html_storage.url_storage.external_url} (ID авто {car.id})')
 
         with transaction.atomic():
-            task.delete()
+            html_storage.processed = True
             html_storage.save()
-            print(f'[SUCCESS] Added car')
-            print(f'[] Removed task')
+            id = task.id
+            task.delete()
+            print(f'[INFO] Задача {id} удалена из очереди')
 
-    print(f'[INFO] All task complited')
+    print(f'[INFO] Complited {len(tasks)} tasks')
+    return
 
 
 def parse_bunches():
