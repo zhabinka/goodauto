@@ -45,8 +45,8 @@ class Car(models.Model):
     engine_size = models.CharField(null=True, blank=True, max_length=20)
     body_type = models.CharField(null=True, blank=True, max_length=20)
     doors_count =  models.PositiveSmallIntegerField(null=True, blank=True)
-    number_of_seats = models.PositiveSmallIntegerField(null=True, blank=True)
-    number_of_keys = models.PositiveSmallIntegerField(null=True, blank=True)
+    seats_count = models.PositiveSmallIntegerField(null=True, blank=True)
+    keys_count = models.PositiveSmallIntegerField(null=True, blank=True)
     paint = models.CharField(null=True, blank=True, max_length=20)
     interior_colour = models.CharField(null=True, blank=True, max_length=20)
 
