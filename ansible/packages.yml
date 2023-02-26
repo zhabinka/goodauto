@@ -1,11 +1,19 @@
 #! /usr/bin/env ansible-playbook
 
 - hosts: all
-  gather_facts: no
+  gather_facts: False
+  become: True
 
   tasks:
-    - name: install packages
-      ansible.builtin.apt:
+    - name: Update and upgrade apt packages
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400
+      tags: apt
+
+    - name: Install apt packages
+      apt:
         name: "{{ item }}"
         state: latest
       loop:
@@ -52,5 +60,12 @@
         - tk-dev
         - xz-utils
         - zlib1g-dev
-      become: yes
       tags: apt
+
+    - name: Install pip packages
+      pip:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - stormssh
+      tags: pip
