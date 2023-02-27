@@ -1,6 +1,7 @@
 import os
 
 from fake_useragent import UserAgent
+from selenium_stealth import stealth
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -33,4 +34,15 @@ def init_chrome_webdriver():
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
 
-    return webdriver.Chrome(service=CHROME_SERVICE, options=options)
+    driver = webdriver.Chrome(service=CHROME_SERVICE, options=options)
+    stealth(driver,
+        languages=["en-GB", "en_US", "ru"],
+        vendor="Google Inc. (Intel Inc.)",
+        platform="MacIntelWin32",
+        webgl_vendor="Intel Inc.",
+        renderer="ANGLE (Intel Inc., Intel(R) Iris(TM) Plus Graphics OpenGL Engine, OpenGL 4.1)",
+        fix_hairline=True,
+        run_on_insecure_origins=True,
+    )
+
+    return driver
