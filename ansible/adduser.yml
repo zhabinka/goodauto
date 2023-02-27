@@ -13,17 +13,28 @@
         name: "{{ group_name }}"
         state: present
 
-    - name: Create user '{{ user_name }}'
+    - name: Create user '{{ user_name }}' with ssh access
       user:
         name: "{{ user_name }}"
         password: "{{ user_password | password_hash('sha512') }}"
         group: "{{ group_name }}"
         shell: /bin/bash
         generate_ssh_key: yes
-        ssh_key_bits: 2048
-        ssh_key_file: "{{ user_ssh_private_key_path }}"
+        ssh_key_bits: 4096
+        ssh_key_file: "{{ user_ssh_private_key }}"
+      # register: user
 
-    - name: Allow '{ group_name }}' group to have passwordless sudo
+    - name: Add '{{ github_host }}' host in the ssh configuration
+      community.general.ssh_config:
+        user: "{{ user_name }}"
+        host: "{{ github_host }}"
+        hostname: "{{ github_host }}"
+        identity_file: "{{ user_ssh_private_key }}"
+        strict_host_key_checking: no
+        port: '22'
+        state: present
+
+    - name: Allow '{{ group_name }}' group to have passwordless sudo
       lineinfile:
         dest: /etc/sudoers
         state: present
@@ -35,3 +46,15 @@
       ansible.posix.authorized_key:
         user: "{{ user_name }}"
         key: "{{ lookup('file', '{{ public_key_file }}') }}"
+
+    - name: Read SSH public key to authorize
+      shell: "cat '{{ user_ssh_public_key }}'"
+      register: ssh_pub_key
+
+    - name: Authorize key with GitHub
+      local_action:
+        module: github_key
+        name: Access key for chess server
+        token: "{{ github_access_token }}"
+        # pubkey: "{{ user.ssh_public_key }}"
+        pubkey: "{{ ssh_pub_key.stdout }}"
