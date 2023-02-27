@@ -25,6 +25,9 @@ def init_chrome_webdriver():
     # https://intoli.com/blog/not-possible-to-block-chrome-headless/chrome-headless-test.html
     options.add_argument('--disable-blink-features=AutomationControlled')
 
+    # remove flash with automated test software message
+    options.add_experimental_option("excludeSwitches", ["enable-automation"])
+
     # use background mode
     options.add_argument('--start-maximized')
     options.add_argument('--headless')
