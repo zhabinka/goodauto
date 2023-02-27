@@ -1,0 +1,73 @@
+#! /usr/bin/env ansible-playbook
+
+- hosts: all
+  gather_facts: True
+  become: True
+
+  vars_files:
+    - ./group_vars/all.yml
+
+  pre_tasks:
+    # Without locales forced to rebuild the cluster
+    # pg_dropcluster --stop 14 main
+    # pg_createcluster --start 14 main
+    - name: Ensure ru_RU.UTF-8 locale exists
+      community.general.locale_gen:
+        name: ru_RU.UTF-8
+        state: present
+
+    - name: Install apt packages for Postgresql
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - postgresql
+        - postgresql-contrib
+        - python3-psycopg2
+        - acl
+
+    - name: Install pip packages for Postgresql
+      pip:
+        name: psycopg2-binary
+        state: present
+
+    # - name: Add postgres user to 'ssl-cert' group
+    #   user:
+    #     name: postgres
+    #     groups: ssl-cert
+
+    - name: Start and enable Postgresql service
+      service:
+        name: postgresql
+        state: started
+        enabled: yes
+
+  tasks:
+    - name: Create database '{{ postgresql_db }}' with specific encoding and locale
+      become_user: postgres
+      community.postgresql.postgresql_db:
+        name: "{{ postgresql_db }}"
+        state: present
+        owner: "{{ postgresql_user }}"
+        encoding: utf-8
+        lc_collate: ru_RU.utf-8
+        lc_ctype: ru_RU.utf-8
+        template: template0
+
+    - name: Create database user '{{ postgresql_user }}'
+      become_user: postgres
+      community.postgresql.postgresql_user:
+        name: "{{ postgresql_user }}"
+        password: "{{ postgresql_password }}"
+        state: present
+      environment:
+        PGOPTIONS: "-c password_encryption=scram-sha-256"
+
+    - name: "Grant '{{ postgresql_user }}' user access to '{{ postgresql_db }}' db"
+      become_user: postgres
+      postgresql_privs:
+        database: "{{ postgresql_db }}"
+        roles: "{{ postgresql_user }}"
+        type: database
+        privs: all
+        grant_option: no
