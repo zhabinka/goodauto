@@ -1,33 +1,31 @@
 #! /usr/bin/env ansible-playbook
 
 - hosts: all
-  gather_facts: no
+  gather_facts: False
+  become: True
+
+  vars_files:
+    - ./group_vars/all.yml
 
   tasks:
     - name: Install nginx
-      ansible.builtin.apt:
+      apt:
         name: nginx
         state: present
-      become: yes
 
-    - name: create logs dir
+    - name: Create logs dir
       file:
-        path: ~/www/goodauto.by/logs/nginx
+        path: "{{ nginx_logs_path }}"
         state: directory
         recurse: yes
 
     - name: Enable virtual host
-      ansible.builtin.file:
-        src: /home/chess/www/goodauto.by/config/nginx/goodauto.by
-        dest: /etc/nginx/sites-enabled/goodauto.by
+      file:
+        src: "{{ nginx_config_path }}"
+        dest: "{{ nginx_site_enabled_link }}"
         state: link
-      become: yes
-      notify:
-        - Restart nginx
 
-  handlers:
     - name: Restart nginx
-      ansible.builtin.service:
+      service:
         name: nginx
         state: restarted
-      become: yes

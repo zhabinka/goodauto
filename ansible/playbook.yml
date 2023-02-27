@@ -3,27 +3,30 @@
 - hosts: all
   gather_facts: False
 
+  vars_files:
+    - ./group_vars/all.yml
+
   tasks:
-    - name: clone github repository
-      ansible.builtin.git:
+    - name: Clone github repository
+      git:
         repo: git@github.com:zhabinka/goodauto.git
-        dest: ~/www/goodauto.by
-        clone: True
-        update: True
-        force: True
+        dest: "{{ site_path }}"
+        clone: yes
+        update: yes
+        force: yes
       tags: git
 
-    - name: install packages in virtualenv
-      ansible.builtin.pip:
-        requirements: ~/www/goodauto.by/requirements.txt
-        virtualenv: ~/www/goodauto.by/.venv
+    - name: Install packages in virtualenv
+      pip:
+        requirements: "{{ requirements_path }}"
+        virtualenv: "{{ virtualenv_path }}"
 
-    - name: create gunicorn socket folder
-      ansible.builtin.file:
-        path: ~/www/goodauto.by/config/gunicorn
+    - name: Create gunicorn socket folder
+      file:
+        path: "{{ gunicorn_socket_dir }}"
         state: directory
 
-    - name: create log dirs
+    - name: Create log dirs
       file:
         path: ~/www/goodauto.by/logs/{{ item }}
         state: directory
@@ -32,14 +35,14 @@
         - gunicorn
         - cron
 
-    - name: check gunicorn service file setup
+    - name: Check gunicorn service file setup
       stat:
-        path: /etc/systemd/system/gunicorn.service
+        path: "{{ gunicorn_service_config_path }}"
       register: link
 
-    - name: setup gunicorn service
-      ansible.builtin.shell:
-        cmd: ln -s /home/chess/www/goodauto.by/config/systemd/gunicorn.service /etc/systemd/system
+    - name: Setup gunicorn service
+      shell:
+        cmd: "ln -s {{ gunicorn_config }} /etc/systemd/system"
       # [TODO]: refusing to convert from directory to symlink for /etc/systemd/system/
       # ansible.builtin.file:
       #   src: /home/chess/www/goodauto.by/config/systemd/gunicorn.service
@@ -47,23 +50,19 @@
       #   state: link
       when: not link.stat.exists
       become: True
-      notify:
-        - start gunicorn
 
-    - name: create an entry like 'date >> <logs>'
+    - name: Create an entry like 'date >> <logs>'
       cron:
-        name: record the current time
+        name: Record the current time
         special_time: 'hourly'
         job: date >> /home/chess/www/goodauto.by/logs/cron/current_date
 
-  handlers:
-    - name: start sevices gunicorn, cron
-      # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html
-      ansible.builtin.systemd:
+    - name: Start sevices (gunicorn, cron)
+      systemd:
         name: "{{ item }}"
         state: started
-        daemon_reload: True
-        enabled: True
+        daemon_reload: yes
+        enabled: yes
       loop:
         - gunicorn
         - cron
