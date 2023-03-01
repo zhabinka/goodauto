@@ -8,12 +8,12 @@ class Car(models.Model):
     url_storage = models.OneToOneField(
         UrlStorage,
         on_delete=models.CASCADE,
-        related_name='url',
+        related_name='car',
     )
     html_storage = models.OneToOneField(
         HtmlStorage,
         on_delete=models.RESTRICT,
-        related_name='html',
+        related_name='car',
     )
     name = models.CharField(max_length=255, blank=True)
     car_model = models.ForeignKey(
@@ -69,3 +69,6 @@ class Car(models.Model):
 
     class Meta:
         db_table = 'cars'
+
+    def __str__(self):
+        return f'{self.name}'

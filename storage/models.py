@@ -9,6 +9,9 @@ class CarModel(models.Model):
         db_table = 'car_models'
         unique_together = ['brand', 'model']
 
+    def __str__(self):
+        return f'{self.brand} {self.model}'
+
 
 class UrlStorage(models.Model):
     external_url = models.URLField(max_length=255, unique=True)

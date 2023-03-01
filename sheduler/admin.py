@@ -1,3 +1,6 @@
 from django.contrib import admin
+from sheduler.models import CrawlerFrontier, ParserFrontier
 
-# Register your models here.
+
+admin.site.register(CrawlerFrontier)
+admin.site.register(ParserFrontier)
