@@ -7,48 +7,61 @@
     - ./group_vars/all.yml
 
   tasks:
-    - name: Clone github repository
-      git:
-        repo: git@github.com:zhabinka/goodauto.git
-        dest: "{{ site_path }}"
-        clone: yes
-        update: yes
-        force: yes
-      tags: git
-
-    - name: Install packages in virtualenv
+    - name: Create virtualenv with requirements
       pip:
         requirements: "{{ requirements_path }}"
         virtualenv: "{{ virtualenv_path }}"
 
-    - name: Create gunicorn socket folder
-      file:
-        path: "{{ gunicorn_socket_dir }}"
-        state: directory
-
     - name: Create log dirs
       file:
-        path: ~/www/goodauto.by/logs/{{ item }}
+        path: "{{ site_path }}/logs/{{ item }}"
         state: directory
         recurse: yes
       with_items:
         - gunicorn
         - cron
 
-    - name: Check gunicorn service file setup
+    - name: Check gunicorn service config
       stat:
         path: "{{ gunicorn_service_config_path }}"
-      register: link
+      register: gunicorn_service
+
+    - name: Check gunicorn socket config
+      stat:
+        path: "{{ gunicorn_socket_config_path }}"
+      register: gunicorn_socket
 
     - name: Setup gunicorn service
       shell:
-        cmd: "ln -s {{ gunicorn_config }} /etc/systemd/system"
+        cmd: "ln -s {{ gunicorn_service_config }} /etc/systemd/system"
       # [TODO]: refusing to convert from directory to symlink for /etc/systemd/system/
       # ansible.builtin.file:
       #   src: /home/chess/www/goodauto.by/config/systemd/gunicorn.service
       #   dest: /etc/systemd/system/
       #   state: link
-      when: not link.stat.exists
+      when: not gunicorn_service.stat.exists
+      become: True
+
+    - name: Setup gunicorn socket
+      shell:
+        cmd: "ln -s {{ gunicorn_socket_config }} /etc/systemd/system"
+      when: not gunicorn_socket.stat.exists
+      become: True
+
+    - name: Restart gunicorn services
+      systemd:
+        name: gunicorn
+        state: restarted
+        daemon_reload: yes
+        enabled: yes
+      become: True
+
+    - name: Start cron services
+      systemd:
+        name: cron
+        state: started
+        daemon_reload: yes
+        enabled: yes
       become: True
 
     - name: Create an entry like 'date >> <logs>'
@@ -56,14 +69,3 @@
         name: Record the current time
         special_time: 'hourly'
         job: date >> /home/chess/www/goodauto.by/logs/cron/current_date
-
-    - name: Start sevices (gunicorn, cron)
-      systemd:
-        name: "{{ item }}"
-        state: started
-        daemon_reload: yes
-        enabled: yes
-      loop:
-        - gunicorn
-        - cron
-      become: True

@@ -1,0 +1,39 @@
+#! /usr/bin/env ansible-playbook
+
+- hosts: all
+  gather_facts: False
+
+  vars_files:
+    - ./group_vars/all.yml
+
+  tasks:
+    - name: Add '{{ github_host }}' host in the ssh configuration
+      community.general.ssh_config:
+        user: "{{ user_name }}"
+        host: "{{ github_host }}"
+        hostname: "{{ github_host }}"
+        identity_file: "{{ user_ssh_private_key }}"
+        strict_host_key_checking: no
+        port: '22'
+        state: present
+
+    - name: Read SSH public key to authorize
+      shell: "cat '{{ user_ssh_public_key }}'"
+      register: ssh_pub_key
+
+    - name: Authorize key with GitHub
+      local_action:
+        module: github_key
+        name: Access key for chess server
+        token: "{{ github_access_token }}"
+        pubkey: "{{ ssh_pub_key.stdout }}"
+
+    - name: Clone github repository
+      git:
+        repo: git@github.com:zhabinka/goodauto.git
+        dest: "{{ site_path }}"
+        clone: yes
+        update: yes
+        force: yes
+      tags: repo
+
