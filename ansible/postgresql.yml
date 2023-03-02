@@ -48,7 +48,7 @@
       community.postgresql.postgresql_db:
         name: "{{ postgresql_db }}"
         state: present
-        owner: "{{ postgresql_user }}"
+        # owner: "{{ postgresql_user }}"
         encoding: utf-8
         lc_collate: ru_RU.utf-8
         lc_ctype: ru_RU.utf-8
