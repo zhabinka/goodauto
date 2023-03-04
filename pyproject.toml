@@ -19,6 +19,7 @@ django-extensions = "^3.2.1"
 ipython = "^8.10.0"
 url-normalize = "^1.4.3"
 selenium-stealth = "^1.0.6"
+psycopg2-binary = "^2.9.5"
 
 [tool.poetry.dev-dependencies]
 
