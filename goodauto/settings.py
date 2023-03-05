@@ -158,5 +158,5 @@ DJANGO_SUPERUSER_EMAIL = os.getenv('DJANGO_SUPERUSER_EMAIL')
 
 CRON_CLASSES = [
     # "demo.cron.EmailUserCountCronJob",
-    "demo.cron.WriteDateToFileCronJob",
+    "sheduler.cron.WriteDateToFileCronJob",
 ]
