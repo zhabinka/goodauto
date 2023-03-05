@@ -2,7 +2,7 @@ import os
 from csv import DictReader
 from django.core.management import BaseCommand
 
-from storage.models import CarModel
+from storage.models import CarModel, UrlBunchStorage
 
 
 BASE_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -12,19 +12,24 @@ ASSETS_CAR_MODELS_PATH = os.path.join(BASE_PATH, '../../fixtures/cars.csv')
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        if CarModel.objects.exists():
-            print('[INFO] Data already loaded...exiting.')
-            return
-
-        print("[INFO] Loading data")
-
         with open(ASSETS_CAR_MODELS_PATH, newline='') as csvfile:
             reader = DictReader(csvfile,  delimiter=';')
             for row in reader:
-                car = CarModel(
+                car_model, created = CarModel.objects.get_or_create(
                     brand=row['mark'],
                     model=row['model'],
                 )
-                car.save()
+                if created:
+                    car_model.save()
+                    print(f'[INFO] Loaded model ')
 
-        print("[SUCCESS] All brands loaded")
+                adesa_url = row['adesa']
+                if adesa_url:
+                    bunch, _ = UrlBunchStorage.objects.get_or_create(
+                        car_model=car_model,
+                    )
+                    bunch.node_url=row['adesa'],
+                    bunch.save()
+                    print(f'[INFO] Add url {adesa_url} to {row["mark"]} {row["model"]}')
+
+        print('[SUCCESS] All brands loaded')

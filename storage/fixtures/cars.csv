@@ -1,4 +1,4 @@
-mark;model
+mark;model;adesa
 AC;378 GT Zagato
 AC;Ace
 AC;Aceca
@@ -45,17 +45,17 @@ Alfa Romeo;Alfetta
 Alfa Romeo;Arna
 Alfa Romeo;Brera
 Alfa Romeo;Disco Volante
-Alfa Romeo;Giulia
-Alfa Romeo;Giulietta
+Alfa Romeo;Giulia;https://www.adesa.eu/ru/findcar?makesModels=Alfa%20Romeo%2CGiulia
+Alfa Romeo;Giulietta;https://www.adesa.eu/ru/findcar?makesModels=Alfa%20Romeo%2CGiulietta
 Alfa Romeo;GT
 Alfa Romeo;GTA Coupe
 Alfa Romeo;GTV
-Alfa Romeo;MiTo
+Alfa Romeo;MiTo;https://www.adesa.eu/ru/findcar?makesModels=Alfa%20Romeo%2CMito
 Alfa Romeo;Montreal
 Alfa Romeo;RZ
 Alfa Romeo;Spider
 Alfa Romeo;Sprint
-Alfa Romeo;Stelvio
+Alfa Romeo;Stelvio;https://www.adesa.eu/ru/findcar?makesModels=Alfa%20Romeo%2CStelvio
 Alfa Romeo;SZ
 Alfa Romeo;Tonale
 Alpina;B10
@@ -126,35 +126,35 @@ Audi;50
 Audi;80
 Audi;90
 Audi;920
-Audi;A1
+Audi;A1;https://www.adesa.eu/ru/findcar?makesModels=Audi%2CA1
 Audi;A2
-Audi;A3
-Audi;A4
+Audi;A3;https://www.adesa.eu/ru/findcar?makesModels=Audi%2CA3
+Audi;A4;https://www.adesa.eu/ru/findcar?makesModels=Audi%2CA4
 Audi;A4 allroad
-Audi;A5
-Audi;A6
+Audi;A5;https://www.adesa.eu/ru/findcar?makesModels=Audi%2CA5
+Audi;A6;https://www.adesa.eu/ru/findcar?makesModels=Audi%2CA6
 Audi;A6 allroad
-Audi;A7
-Audi;A8
+Audi;A7;https://www.adesa.eu/ru/findcar?makesModels=Audi%2CA7
+Audi;A8;https://www.adesa.eu/ru/findcar?makesModels=Audi%2CA8
 Audi;Cabriolet
 Audi;Coupe
-Audi;e-tron
+Audi;e-tron;https://www.adesa.eu/ru/findcar?makesModels=Audi%2CE-Tron
 Audi;e-tron GT
 Audi;e-tron S
 Audi;e-tron S Sportback
 Audi;e-tron Sportback
 Audi;NSU RO 80
-Audi;Q2
+Audi;Q2;https://www.adesa.eu/ru/findcar?makesModels=Audi%2CQ2
 Audi;Q2L
-Audi;Q3
+Audi;Q3;https://www.adesa.eu/ru/findcar?makesModels=Audi%2CQ3
 Audi;Q3 Sportback
-Audi;Q4 e-tron
+Audi;Q4 e-tron;https://www.adesa.eu/ru/findcar?makesModels=Audi%2CQ4%20E-tron
 Audi;Q4 Sportback e-tron
-Audi;Q5
+Audi;Q5;https://www.adesa.eu/ru/findcar?makesModels=Audi%2CQ5
 Audi;Q5 e-tron
 Audi;Q5 Sportback
-Audi;Q7
-Audi;Q8
+Audi;Q7;https://www.adesa.eu/ru/findcar?makesModels=Audi%2CQ7
+Audi;Q8;https://www.adesa.eu/ru/findcar?makesModels=Audi%2CQ8
 Audi;Quattro
 Audi;R8
 Audi;R8 LMP
@@ -181,7 +181,7 @@ Audi;SQ5
 Audi;SQ5 Sportback
 Audi;SQ7
 Audi;SQ8
-Audi;TT
+Audi;TT;https://www.adesa.eu/ru/findcar?makesModels=Audi%2CTT
 Audi;TT RS
 Audi;TTS
 Audi;Typ R
@@ -226,7 +226,7 @@ Bentley;Continental
 Bentley;Continental Flying Spur
 Bentley;Continental GT
 Bentley;Eight
-Bentley;Flying Spur
+Bentley;Flying Spur;https://www.adesa.eu/ru/findcar?makesModels=Bentley%2CFlying%20Spur
 Bentley;Mark VI
 Bentley;Mulsanne
 Bentley;R Type
@@ -240,13 +240,13 @@ Bitter;CD
 Bitter;Type 3
 Blaval;FH-EQ
 BMW;02 (E10)
-BMW;1 серии
+BMW;1 серии;https://www.adesa.eu/ru/findcar?makesModels=BMW%2C1%20Series
 BMW;1M
-BMW;2 серии
+BMW;2 серии;https://www.adesa.eu/ru/findcar?makesModels=BMW%2C2%20Series
 BMW;2 серии Active Tourer
 BMW;2 серии Gran Tourer
 BMW;2000 C/CS
-BMW;3 серии
+BMW;3 серии;https://www.adesa.eu/ru/findcar?makesModels=BMW%2C3%20Series
 BMW;3/15
 BMW;315
 BMW;3200
@@ -254,26 +254,26 @@ BMW;321
 BMW;326
 BMW;327
 BMW;340
-BMW;4 серии
-BMW;5 серии
+BMW;4 серии;https://www.adesa.eu/ru/findcar?makesModels=BMW%2C4%20Series
+BMW;5 серии;https://www.adesa.eu/ru/findcar?makesModels=BMW%2C5%20Series
 BMW;501
 BMW;502
 BMW;503
 BMW;507
-BMW;6 серии
+BMW;6 серии;https://www.adesa.eu/ru/findcar?makesModels=BMW%2C6%20Series
 BMW;600
-BMW;7 серии
+BMW;7 серии;https://www.adesa.eu/ru/findcar?makesModels=BMW%2C7%20Series
 BMW;700
-BMW;8 серии
+BMW;8 серии;https://www.adesa.eu/ru/findcar?makesModels=BMW%2C8%20Series
 BMW;E3
 BMW;E9
-BMW;i3
+BMW;i3;https://www.adesa.eu/ru/findcar?makesModels=BMW%2Ci3
 BMW;i4
 BMW;i7
 BMW;i8
 BMW;iX
 BMW;iX1
-BMW;iX3
+BMW;iX3;https://www.adesa.eu/ru/findcar?makesModels=BMW%2CiX3
 BMW;M2
 BMW;M3
 BMW;M4
@@ -281,22 +281,22 @@ BMW;M5
 BMW;M6
 BMW;M8
 BMW;New Class
-BMW;X1
-BMW;X2
-BMW;X3
+BMW;X1;https://www.adesa.eu/ru/findcar?makesModels=BMW%2CX1
+BMW;X2;https://www.adesa.eu/ru/findcar?makesModels=BMW%2CX2
+BMW;X3;https://www.adesa.eu/ru/findcar?makesModels=BMW%2CX3
 BMW;X3 M
-BMW;X4
+BMW;X4;https://www.adesa.eu/ru/findcar?makesModels=BMW%2CX4
 BMW;X4 M
-BMW;X5
+BMW;X5;https://www.adesa.eu/ru/findcar?makesModels=BMW%2CX5
 BMW;X5 M
-BMW;X6
+BMW;X6;https://www.adesa.eu/ru/findcar?makesModels=BMW%2CX6
 BMW;X6 M
-BMW;X7
+BMW;X7;https://www.adesa.eu/ru/findcar?makesModels=BMW%2CX7
 BMW;XM
 BMW;Z1
-BMW;Z3
+BMW;Z3;https://www.adesa.eu/ru/findcar?makesModels=BMW%2CZ3
 BMW;Z3 M
-BMW;Z4
+BMW;Z4;https://www.adesa.eu/ru/findcar?makesModels=BMW%2CZ4
 BMW;Z4 M
 BMW;Z8
 Borgward;2000
@@ -403,7 +403,7 @@ Cadillac;Lyriq
 Cadillac;Series 62
 Cadillac;Seville
 Cadillac;Sixty Special
-Cadillac;SRX
+Cadillac;SRX;https://www.adesa.eu/ru/findcar?makesModels=Cadillac%2CSRX
 Cadillac;STS
 Cadillac;XLR
 Cadillac;XT4
@@ -1945,29 +1945,29 @@ Mega;Track
 Mercedes-Benz;190 (W201)
 Mercedes-Benz;190 SL
 Mercedes-Benz;220 (W187)
-Mercedes-Benz;A-Класс
+Mercedes-Benz;A-Класс;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CA
 Mercedes-Benz;A-Класс AMG
-Mercedes-Benz;AMG GT
+Mercedes-Benz;AMG GT;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CAMG%20GT
 Mercedes-Benz;AMG ONE
-Mercedes-Benz;B-Класс
-Mercedes-Benz;C-Класс
+Mercedes-Benz;B-Класс;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CB
+Mercedes-Benz;C-Класс;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CC
 Mercedes-Benz;C-Класс AMG
-Mercedes-Benz;Citan
+Mercedes-Benz;Citan;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CCitan
 Mercedes-Benz;CL-Класс
 Mercedes-Benz;CL-Класс AMG
-Mercedes-Benz;CLA
+Mercedes-Benz;CLA;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CCLA
 Mercedes-Benz;CLA AMG
 Mercedes-Benz;CLC-Класс
 Mercedes-Benz;CLK AMG GTR
 Mercedes-Benz;CLK-Класс
 Mercedes-Benz;CLK-Класс AMG
-Mercedes-Benz;CLS
+Mercedes-Benz;CLS;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CCLS
 Mercedes-Benz;CLS AMG
-Mercedes-Benz;E-Класс
+Mercedes-Benz;E-Класс;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CE
 Mercedes-Benz;E-Класс AMG
-Mercedes-Benz;EQA
+Mercedes-Benz;EQA;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CEQA
 Mercedes-Benz;EQB
-Mercedes-Benz;EQC
+Mercedes-Benz;EQC;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CEQC
 Mercedes-Benz;EQE
 Mercedes-Benz;EQE AMG
 Mercedes-Benz;EQE SUV
@@ -1976,51 +1976,54 @@ Mercedes-Benz;EQS
 Mercedes-Benz;EQS AMG
 Mercedes-Benz;EQS SUV
 Mercedes-Benz;EQV
+Mercedes-Benz;eVito;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CeVito
 Mercedes-Benz;G-Класс
 Mercedes-Benz;G-Класс AMG
 Mercedes-Benz;G-Класс AMG 6x6
-Mercedes-Benz;GL-Класс
+Mercedes-Benz;GL-Класс;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CGL
 Mercedes-Benz;GL-Класс AMG
-Mercedes-Benz;GLA
+Mercedes-Benz;GLA;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CGLA
 Mercedes-Benz;GLA AMG
-Mercedes-Benz;GLB
+Mercedes-Benz;GLB;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CGLB
 Mercedes-Benz;GLB AMG
-Mercedes-Benz;GLC
+Mercedes-Benz;GLC;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CGLC
 Mercedes-Benz;GLC AMG
 Mercedes-Benz;GLC Coupe
 Mercedes-Benz;GLC Coupe AMG
-Mercedes-Benz;GLE
+Mercedes-Benz;GLE;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CGLE
 Mercedes-Benz;GLE AMG
 Mercedes-Benz;GLE Coupe
 Mercedes-Benz;GLE Coupe AMG
-Mercedes-Benz;GLK-Класс
-Mercedes-Benz;GLS
+Mercedes-Benz;GLK-Класс;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CGLK
+Mercedes-Benz;GLS;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CGLS
 Mercedes-Benz;GLS AMG
 Mercedes-Benz;M-Класс
 Mercedes-Benz;M-Класс AMG
+Mercedes-Benz;ML;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CML
 Mercedes-Benz;Marco Polo
 Mercedes-Benz;Maybach G 650 Landaulet
 Mercedes-Benz;Maybach GLS
 Mercedes-Benz;Maybach S-Класс
 Mercedes-Benz;Metris
-Mercedes-Benz;R-Класс
+Mercedes-Benz;R-Класс;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CR
 Mercedes-Benz;R-Класс AMG
-Mercedes-Benz;S-Класс
+Mercedes-Benz;S-Класс;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CS
 Mercedes-Benz;S-Класс AMG
 Mercedes-Benz;Simplex
-Mercedes-Benz;SL-Класс
+Mercedes-Benz;SL-Класс;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CSL
 Mercedes-Benz;SL-Класс AMG
 Mercedes-Benz;SLC
 Mercedes-Benz;SLC AMG
-Mercedes-Benz;SLK-Класс
+Mercedes-Benz;SLK-Класс;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CSLK
 Mercedes-Benz;SLK-Класс AMG
 Mercedes-Benz;SLR McLaren
 Mercedes-Benz;SLS AMG
+Mercedes-Benz;Sprinter;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CSprinter
 Mercedes-Benz;T-Класс
-Mercedes-Benz;V-Класс
+Mercedes-Benz;V-Класс;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CV
 Mercedes-Benz;Vaneo
-Mercedes-Benz;Viano
-Mercedes-Benz;Vito
+Mercedes-Benz;Viano;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CViano
+Mercedes-Benz;Vito;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CVito
 Mercedes-Benz;W100
 Mercedes-Benz;W105
 Mercedes-Benz;W108
@@ -2042,7 +2045,7 @@ Mercedes-Benz;W189
 Mercedes-Benz;W191
 Mercedes-Benz;W21
 Mercedes-Benz;W29
-Mercedes-Benz;X-Класс
+Mercedes-Benz;X-Класс;https://www.adesa.eu/ru/findcar?makesModels=Mercedes-Benz%2CX
 Mercury;Capri
 Mercury;Colony Park
 Mercury;Cougar
@@ -3198,78 +3201,82 @@ Venturi;260 LM
 Venturi;300 Atlantique
 Venturi;400 GT
 Volkswagen;181
-Volkswagen;Amarok
-Volkswagen;Arteon
+Volkswagen;Amarok;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CAmarok
+Volkswagen;Arteon;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CArteon
 Volkswagen;Arteon R
 Volkswagen;Atlas
 Volkswagen;Atlas Cross Sport
-Volkswagen;Beetle
+Volkswagen;Beetle;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CBeetle
 Volkswagen;Bora
-Volkswagen;Caddy
+Volkswagen;Caddy;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CCaddy
 Volkswagen;California
-Volkswagen;Caravelle
+Volkswagen;Caravelle;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CCaravelle
 Volkswagen;Corrado
+Volkswagen;Crafter;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CCrafter
 Volkswagen;Derby
 Volkswagen;Eos
 Volkswagen;EuroVan
-Volkswagen;Fox
+Volkswagen;e-Golf;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2Ce-Golf
+Volkswagen;e-Up!;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2Ce-Up!
+Volkswagen;Fox;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CFox
 Volkswagen;Gol
-Volkswagen;Golf
+Volkswagen;Golf;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CGolf
 Volkswagen;Golf Country
 Volkswagen;Golf GTI
 Volkswagen;Golf Plus
 Volkswagen;Golf R
 Volkswagen;Golf R32
 Volkswagen;Golf Sportsvan
-Volkswagen;ID.3
-Volkswagen;ID.4
+Volkswagen;ID.3;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CID.3
+Volkswagen;ID.4;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CID.4
 Volkswagen;ID.5
 Volkswagen;ID.6
 Volkswagen;ID.Buzz
 Volkswagen;Iltis
-Volkswagen;Jetta
+Volkswagen;Jetta;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CJetta
 Volkswagen;K70
 Volkswagen;Karmann-Ghia
 Volkswagen;Lavida
 Volkswagen;Lupo
 Volkswagen;Lupo GTI
-Volkswagen;Multivan
+Volkswagen;Multivan;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CMultivan
 Volkswagen;Parati
-Volkswagen;Passat
+Volkswagen;Passat;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CPassat
 Volkswagen;Passat (North America)
 Volkswagen;Passat CC
 Volkswagen;Phaeton
 Volkswagen;Pointer
-Volkswagen;Polo
+Volkswagen;Polo;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CPolo
 Volkswagen;Polo GTI
 Volkswagen;Polo R WRC
 Volkswagen;Quantum
 Volkswagen;Routan
 Volkswagen;Santana
-Volkswagen;Scirocco
+Volkswagen;Scirocco;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CScirocco
 Volkswagen;Scirocco R
-Volkswagen;Sharan
+Volkswagen;Sharan;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CSharan
 Volkswagen;SpaceFox
-Volkswagen;T-Cross
+Volkswagen;T-Cross;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CT-Cross
 Volkswagen;T-Roc
 Volkswagen;T-Roc R
-Volkswagen;Taigo
+Volkswagen;Taigo;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CTaigo
 Volkswagen;Taos
 Volkswagen;Taro
 Volkswagen;Teramont
 Volkswagen;Tharu
-Volkswagen;Tiguan
+Volkswagen;Tiguan;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CTiguan
 Volkswagen;Tiguan R
-Volkswagen;Touareg
-Volkswagen;Touran
-Volkswagen;Transporter
+Volkswagen;Touareg;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CTouareg
+Volkswagen;Touran;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CTouran
+Volkswagen;Transporter;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CTransporter
 Volkswagen;Type 1
 Volkswagen;Type 166
 Volkswagen;Type 2
 Volkswagen;Type 3
 Volkswagen;Type 4
 Volkswagen;Type 82
-Volkswagen;up!
+Volkswagen;T-ROC;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CT-ROC
+Volkswagen;up!;https://www.adesa.eu/ru/findcar?makesModels=Volkswagen%2CUp!
 Volkswagen;Vento
 Volkswagen;XL1
 Volvo;120 Series
@@ -3278,7 +3285,7 @@ Volvo;164
 Volvo;240 Series
 Volvo;260 Series
 Volvo;300 Series
-Volvo;440
+Volvo;440;https://www.adesa.eu/ru/findcar?makesModels=Volvo%2C440
 Volvo;460
 Volvo;480
 Volvo;66
@@ -3288,7 +3295,7 @@ Volvo;780
 Volvo;850
 Volvo;940
 Volvo;960
-Volvo;C30
+Volvo;C30;https://www.adesa.eu/ru/findcar?makesModels=Volvo%2CC30
 Volvo;C40
 Volvo;C70
 Volvo;Laplander
@@ -3297,23 +3304,23 @@ Volvo;P1900
 Volvo;PV444
 Volvo;PV544
 Volvo;S40
-Volvo;S60
+Volvo;S60;https://www.adesa.eu/ru/findcar?makesModels=Volvo%2CS60
 Volvo;S60 Cross Country
 Volvo;S70
 Volvo;S80
-Volvo;S90
-Volvo;V40
+Volvo;S90;https://www.adesa.eu/ru/findcar?makesModels=Volvo%2CS90
+Volvo;V40;https://www.adesa.eu/ru/findcar?makesModels=Volvo%2CV40
 Volvo;V40 Cross Country
-Volvo;V50
-Volvo;V60
+Volvo;V50;https://www.adesa.eu/ru/findcar?makesModels=Volvo%2CV50
+Volvo;V60;https://www.adesa.eu/ru/findcar?makesModels=Volvo%2CV60
 Volvo;V60 Cross Country
-Volvo;V70
-Volvo;V90
+Volvo;V70;https://www.adesa.eu/ru/findcar?makesModels=Volvo%2CV70
+Volvo;V90;https://www.adesa.eu/ru/findcar?makesModels=Volvo%2CV90
 Volvo;V90 Cross Country
-Volvo;XC40
-Volvo;XC60
+Volvo;XC40;https://www.adesa.eu/ru/findcar?makesModels=Volvo%2CXC40
+Volvo;XC60;https://www.adesa.eu/ru/findcar?makesModels=Volvo%2CXC60
 Volvo;XC70
-Volvo;XC90
+Volvo;XC90;https://www.adesa.eu/ru/findcar?makesModels=Volvo%2CXC90
 Vortex;Corda
 Vortex;Estina
 Vortex;Tingo
