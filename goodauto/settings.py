@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_extensions",
-    "django_crontab",
+    "django_cron",
     "goodauto.cars",
     "sheduler",
     "storage",
