@@ -58,7 +58,7 @@
       become_user: postgres
       community.postgresql.postgresql_user:
         name: "{{ postgresql_user }}"
-        password: "{{ postgresql_password }}"
+        password: "{{ postgresql_user_password }}"
         state: present
       environment:
         PGOPTIONS: "-c password_encryption=scram-sha-256"
