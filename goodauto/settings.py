@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_extensions",
+    "django_crontab",
     "goodauto.cars",
     "sheduler",
     "storage",
@@ -152,3 +153,10 @@ SHELL_PLUS_IMPORTS = [
 DJANGO_SUPERUSER_USERNAME = os.getenv('DJANGO_SUPERUSER_USERNAME')
 DJANGO_SUPERUSER_PASSWORD = os.getenv('DJANGO_SUPERUSER_PASSWORD')
 DJANGO_SUPERUSER_EMAIL = os.getenv('DJANGO_SUPERUSER_EMAIL')
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+CRON_CLASSES = [
+    # "demo.cron.EmailUserCountCronJob",
+    "demo.cron.WriteDateToFileCronJob",
+]
