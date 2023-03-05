@@ -15,13 +15,14 @@ class Command(BaseCommand):
         with open(ASSETS_CAR_MODELS_PATH, newline='') as csvfile:
             reader = DictReader(csvfile,  delimiter=';')
             for row in reader:
+                model = f'{row["mark"]} {row["model"]}'
                 car_model, created = CarModel.objects.get_or_create(
                     brand=row['mark'],
                     model=row['model'],
                 )
                 if created:
                     car_model.save()
-                    print(f'[INFO] Loaded model ')
+                    print(f'[INFO] Loaded model {model}')
 
                 adesa_url = row['adesa']
                 if adesa_url:
@@ -30,6 +31,6 @@ class Command(BaseCommand):
                     )
                     bunch.node_url=row['adesa'],
                     bunch.save()
-                    print(f'[INFO] Add url {adesa_url} to {row["mark"]} {row["model"]}')
+                    print(f'[INFO] Add url {adesa_url} to {model}')
 
         print('[SUCCESS] All brands loaded')
