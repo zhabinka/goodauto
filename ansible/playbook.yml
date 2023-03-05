@@ -11,6 +11,7 @@
       pip:
         requirements: "{{ requirements_path }}"
         virtualenv: "{{ virtualenv_path }}"
+      tags: req
 
     - name: Create log dirs
       file:
@@ -69,3 +70,10 @@
         name: Record the current time
         special_time: 'hourly'
         job: date >> /home/chess/www/goodauto.by/logs/cron/current_date
+
+    - name: Make django migrate
+      community.general.django_manage:
+        command: migrate
+        project_path: "{{ site_path }}"
+        virtualenv: "{{ virtualenv_path }}"
+      tags: django
