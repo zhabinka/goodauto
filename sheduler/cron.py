@@ -1,48 +1,35 @@
 import datetime
 import os
 
-# from django.conf import settings
-# from django.contrib.auth.models import User
-# from django.core.mail import send_mail
-
 from django_cron import CronJobBase, Schedule
+from sheduler.crawler import scrapy_bunches
 
 CUR_DIR = os.path.dirname(os.path.realpath(__file__))
 LOG_FILE = os.path.join(CUR_DIR, '../logs/cron/test.txt')
+CRAWLER_LOG_FILE = os.path.join(CUR_DIR, '../logs/cron/crawler.txt')
 
 
-# class EmailUserCountCronJob(CronJobBase):
-#     """
-#     Send an email with the user count.
-#     """
-#
-#     RUN_EVERY_MINS = 0 if settings.DEBUG else 360  # 6 hours when not DEBUG
-#
-#     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
-#     code = 'cron.EmailUserCountCronJob'
-#
-#     def do(self):
-#         message = 'Active users: %d' % User.objects.count()
-#         print(message)
-#         send_mail(
-#             '[django-cron demo] Active user count',
-#             message,
-#             'no-reply@django-cron-demo.com',
-#             ['test@django-cron-demo.com'],
-#         )
+class RunUrlBunchCrawler(CronJobBase):
+    RUN_EVERY_MINS = 5
+    schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
+    code = 'cron.RunUrlBunchCrawler'
 
+    def do(self):
+        scrapy_bunches(limit=5)
+        message = f"{datetime.datetime.now()} Downloaded 5 bunch"
+        with open(CRAWLER_LOG_FILE, "a") as f:
+            f.write(message)
 
 class WriteDateToFileCronJob(CronJobBase):
     """
     Write current date to file.
     """
 
-    RUN_EVERY_MINS = 1
     # schedule = Schedule(run_at_times=["12:20", "12:25"], retry_after_failure_mins=1)
-    schedule = Schedule(run_every_mins=RUN_EVERY_MINS, retry_after_failure_mins=10)
     code = 'cron.WriteDateToFileCronJob'
 
+    RUN_EVERY_MINS = 60
     def do(self):
         message = f"Current date: {datetime.datetime.now()} \n"
-        with open(LOG_FILE, "w") as f:
+        with open(LOG_FILE, "a") as f:
             f.write(message)
