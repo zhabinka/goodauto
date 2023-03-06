@@ -66,8 +66,8 @@ def scrapy(limit=2):
     print(f'[INFO] All tasks complited')
 
 
-def scrapy_bunches():
-    for bunch in UrlBunchStorage.objects.filter(processed=False):
+def scrapy_bunches(limit=None):
+    for bunch in UrlBunchStorage.objects.filter(processed=False)[:limit]:
         scrapy_bunch(bunch)
         print(f'[SUCCESS] {bunch.node_url}')
 
