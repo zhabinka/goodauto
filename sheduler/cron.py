@@ -15,7 +15,7 @@ class RunUrlBunchCrawler(CronJobBase):
     code = 'cron.RunUrlBunchCrawler'
 
     def do(self):
-        scrapy_bunches(limit=5)
+        scrapy_bunches(limit=1)
         message = f"{datetime.datetime.now()} Downloaded 5 bunch"
         with open(CRAWLER_LOG_FILE, "a") as f:
             f.write(message)
