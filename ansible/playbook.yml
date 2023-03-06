@@ -13,14 +13,11 @@
         virtualenv: "{{ virtualenv_path }}"
       tags: req
 
-    - name: Create log dirs
+    - name: Create gunicorn logs dir
       file:
-        path: "{{ site_path }}/logs/{{ item }}"
+        path: "{{ site_path }}/logs/gunicorn/"
         state: directory
         recurse: yes
-      with_items:
-        - gunicorn
-        - cron
 
     - name: Check gunicorn service config
       stat:
@@ -56,20 +53,6 @@
         daemon_reload: yes
         enabled: yes
       become: True
-
-    - name: Start cron services
-      systemd:
-        name: cron
-        state: started
-        daemon_reload: yes
-        enabled: yes
-      become: True
-
-    - name: Create an entry like 'date >> <logs>'
-      cron:
-        name: Record the current time
-        special_time: 'hourly'
-        job: date >> /home/chess/www/goodauto.by/logs/cron/current_date
 
     - name: Make django migrate
       community.general.django_manage:
