@@ -39,10 +39,10 @@ class WriteDateToFileCronJob(CronJobBase):
 
     RUN_EVERY_MINS = 1
     # schedule = Schedule(run_at_times=["12:20", "12:25"], retry_after_failure_mins=1)
-    schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
+    schedule = Schedule(run_every_mins=RUN_EVERY_MINS, retry_after_failure_mins=10)
     code = 'cron.WriteDateToFileCronJob'
 
     def do(self):
         message = f"Current date: {datetime.datetime.now()} \n"
-        with open(LOG_FILE, "w") as f
+        with open(LOG_FILE, "w") as f:
             f.write(message)
