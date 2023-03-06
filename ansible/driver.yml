@@ -1,0 +1,19 @@
+#! /usr/bin/env ansible-playbook
+
+- hosts: all
+  gather_facts: True
+
+  vars_files:
+    - ./group_vars/all.yml
+
+  roles:
+     - { role: cmprescott.chrome, become: yes }
+
+  tasks:
+  - name: Downloal and unarchive chromedriver_linux64.zip
+    unarchive:
+      src: https://chromedriver.storage.googleapis.com/110.0.5481.77/chromedriver_linux64.zip
+      dest: "{{ site_path }}/sheduler"
+      include: ["chromedriver"]
+      remote_src: yes
+    tags: driver
