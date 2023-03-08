@@ -29,7 +29,7 @@ class Command(BaseCommand):
                     bunch, _ = UrlBunchStorage.objects.get_or_create(
                         car_model=car_model,
                     )
-                    bunch.node_url=row['adesa'],
+                    bunch.node_url=adesa_url
                     bunch.save()
                     print(f'[INFO] Add url {adesa_url} to {model}')
 
