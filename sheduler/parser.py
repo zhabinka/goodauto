@@ -30,7 +30,7 @@ def pull_numbers(bs):
     return int(re.sub('[^0-9]', '', text))
 
 
-def parse(limit=2):
+def parse(limit=None):
     tasks = ParserFrontier.objects.all()[:limit]
 
     for task in tasks:
@@ -138,9 +138,9 @@ def parse_bunch(bunch):
             car_model=bunch.url_bunch_storage.car_model,
         )
         if created:
-            print(f'ссылка {url_storage.id} только что создана')
-        else:
-            print(f'ссылка {url_storage.id} уже есть в хранилище')
+            print(f'[INFO] Ссылка {url_storage.external_url}({url_storage.id}) добавлена в хранилище')
+        # else:
+        #     print(f'ссылка {url_storage.id} уже есть в хранилище')
 
     bunch.processed=True
     bunch.save()
