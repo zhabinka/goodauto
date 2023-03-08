@@ -157,6 +157,6 @@ DJANGO_SUPERUSER_EMAIL = os.getenv('DJANGO_SUPERUSER_EMAIL')
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CRON_CLASSES = [
-    "sheduler.cron.WriteDateToFileCronJob",
     "sheduler.cron.RunUrlBunchCrawler",
+    "sheduler.cron.RunUrlBunchParser",
 ]
