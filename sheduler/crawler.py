@@ -26,7 +26,7 @@ def add_crawler_tasks():
         print(f'[{created}] {url} in sheduler {task}')
 
 
-def scrapy(limit=2):
+def scrapy(limit=None):
     driver = init_chrome_webdriver()
     tasks = CrawlerFrontier.objects.all()[:limit]
 
