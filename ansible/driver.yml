@@ -6,14 +6,31 @@
   vars_files:
     - ./group_vars/all.yml
 
-  roles:
-     - { role: cmprescott.chrome, become: yes }
-
   tasks:
-  - name: Downloal and unarchive chromedriver_linux64.zip
-    unarchive:
-      src: https://chromedriver.storage.googleapis.com/110.0.5481.77/chromedriver_linux64.zip
-      dest: "{{ site_path }}/sheduler"
-      include: ["chromedriver"]
-      remote_src: yes
-    tags: driver
+    - name: "Ensure Google linux signing key present"
+      become: True
+      apt_key:
+        url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+        state: present
+
+    - name: "Ensure Google chrome repo present"
+      become: True
+      apt_repository:
+        repo: "deb [arch=x86_64] http://dl.google.com/linux/chrome/deb/ stable main"
+        filename: "google-chrome"
+        state: present
+        update_cache: yes
+
+    - name: "Ensure Google chrome present"
+      become: True
+      apt:
+        name: "google-chrome-stable"
+        state: present
+
+    - name: Downloal and unarchive chromedriver
+      unarchive:
+        src: https://chromedriver.storage.googleapis.com/111.0.5563.64/chromedriver_linux64.zip
+        dest: "{{ site_path }}/sheduler"
+        include: ["chromedriver"]
+        remote_src: yes
+      tags: driver
