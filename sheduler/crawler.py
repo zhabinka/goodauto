@@ -32,9 +32,10 @@ def scrapy(limit=None):
 
     try:
         for task in tasks:
+            time.sleep(random.randint(3, 6))
             url = task.url_storage.external_url
             driver.get(url=url)
-            time.sleep(random.randint(8, 12))
+            time.sleep(random.randint(10, 20))
 
             html_storage, _ = HtmlStorage.objects.get_or_create(
                 url_storage=task.url_storage
