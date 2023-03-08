@@ -159,4 +159,7 @@ DJANGO_SUPERUSER_EMAIL = os.getenv('DJANGO_SUPERUSER_EMAIL')
 CRON_CLASSES = [
     "sheduler.cron.RunUrlBunchCrawler",
     "sheduler.cron.RunUrlBunchParser",
+    "sheduler.cron.RunUrlCrawler",
+    "sheduler.cron.RunUrlParser",
+    "sheduler.cron.AddShedulerTasks",
 ]
