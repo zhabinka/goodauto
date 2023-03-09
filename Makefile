@@ -39,3 +39,6 @@ dbshell:
 
 load:
 	poetry run python manage.py load_brands
+
+test:
+	poetry run pytest
