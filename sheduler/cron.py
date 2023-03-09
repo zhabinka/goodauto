@@ -37,7 +37,7 @@ class RunUrlCrawler(CronJobBase):
 
 
 class RunUrlParser(CronJobBase):
-    RUN_EVERY_MINS = 20
+    RUN_EVERY_MINS = 2
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
     code = 'cron.RunUrlParser'
 
@@ -49,7 +49,7 @@ class RunUrlParser(CronJobBase):
 
 
 class RunUrlBunchParser(CronJobBase):
-    RUN_EVERY_MINS = 30
+    RUN_EVERY_MINS = 2
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
     code = 'cron.RunUrlBunchParser'
 
