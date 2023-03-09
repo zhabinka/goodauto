@@ -27,7 +27,8 @@ def add_parser_tasks():
 
 
 def pull_numbers(bs):
-    numbers = re.sub('[^0-9]', '', bs.text)
+    text = bs.text if bs else ''
+    numbers = re.sub('[^0-9]', '', text)
     return int(numbers) if numbers else None
 
 
