@@ -1542,10 +1542,10 @@ Kia;Avella
 Kia;Borrego
 Kia;Cadenza
 Kia;Capital
-Kia;Carens
+Kia;Carens;https://www.adesa.eu/ru/findcar?makesModels=Kia%2CCarens
 Kia;Carnival
 Kia;Carstar
-Kia;Ceed
+Kia;Ceed;https://www.adesa.eu/ru/findcar?makesModels=Kia%2CCeed
 Kia;Ceed GT
 Kia;Cerato
 Kia;Clarus
@@ -1566,10 +1566,10 @@ Kia;Magentis
 Kia;Mentor
 Kia;Mohave
 Kia;Morning
-Kia;Niro
+Kia;Niro;https://www.adesa.eu/ru/findcar?makesModels=Kia%2CNiro
 Kia;Opirus
-Kia;Optima
-Kia;Picanto
+Kia;Optima;https://www.adesa.eu/ru/findcar?makesModels=Kia%2COptima
+Kia;Picanto;https://www.adesa.eu/ru/findcar?makesModels=Kia%2CPicanto
 Kia;Potentia
 Kia;Pregio
 Kia;Pride
@@ -1578,21 +1578,21 @@ Kia;Quanlima
 Kia;Quoris
 Kia;Ray
 Kia;Retona
-Kia;Rio
+Kia;Rio;https://www.adesa.eu/ru/findcar?makesModels=Kia%2CRio
 Kia;Sedona
 Kia;Seltos
 Kia;Sephia
 Kia;Shuma
-Kia;Sorento
-Kia;Soul
+Kia;Sorento;https://www.adesa.eu/ru/findcar?makesModels=Kia%2CSorento
+Kia;Soul;https://www.adesa.eu/ru/findcar?makesModels=Kia%2CSoul
 Kia;Soul EV
 Kia;Spectra
-Kia;Sportage
-Kia;Stinger
+Kia;Sportage;https://www.adesa.eu/ru/findcar?makesModels=Kia%2CSportage
+Kia;Stinger;https://www.adesa.eu/ru/findcar?makesModels=Kia%2CStinger
 Kia;Stonic
 Kia;Telluride
 Kia;Towner
-Kia;Venga
+Kia;Venga;https://www.adesa.eu/ru/findcar?makesModels=Kia%2CVenga
 Kia;Visto
 Kia;X-Trek
 Kia;XCeed
