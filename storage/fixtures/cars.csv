@@ -1006,11 +1006,11 @@ Fisker;Karma
 Flanker;F
 Ford;Aerostar
 Ford;Aspire
-Ford;B-MAX
+Ford;B-MAX;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CB-Max
 Ford;Bronco
 Ford;Bronco Sport
 Ford;Bronco-II
-Ford;C-MAX
+Ford;C-MAX;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CC-Max
 Ford;Capri
 Ford;Consul
 Ford;Contour
@@ -1021,8 +1021,8 @@ Ford;Crown Victoria
 Ford;Custom
 Ford;Econoline
 Ford;Econovan
-Ford;EcoSport
-Ford;Edge
+Ford;EcoSport;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CEcosport
+Ford;Edge;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CEdge
 Ford;Escape
 Ford;Escort
 Ford;Escort (North America)
@@ -1037,11 +1037,11 @@ Ford;Fairlane
 Ford;Fairmont
 Ford;Falcon
 Ford;Festiva
-Ford;Fiesta
+Ford;Fiesta;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CFiesta
 Ford;Fiesta ST
 Ford;Five Hundred
 Ford;Flex
-Ford;Focus
+Ford;Focus;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CFocus
 Ford;Focus RS
 Ford;Focus ST
 Ford;Freda
@@ -1050,7 +1050,7 @@ Ford;Freestyle
 Ford;Fusion
 Ford;Fusion (North America)
 Ford;Galaxie
-Ford;Galaxy
+Ford;Galaxy;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CGalaxy
 Ford;GPA
 Ford;Granada
 Ford;Granada (North America)
@@ -1058,8 +1058,8 @@ Ford;GT
 Ford;GT40
 Ford;Ikon
 Ford;Ixion
-Ford;KA
-Ford;Kuga
+Ford;KA;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CKa
+Ford;Kuga;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CKuga
 Ford;Laser
 Ford;LTD Country Squire
 Ford;LTD Crown Victoria
@@ -1068,18 +1068,18 @@ Ford;Mainline
 Ford;Maverick
 Ford;Model A
 Ford;Model T
-Ford;Mondeo
+Ford;Mondeo;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CMondeo
 Ford;Mondeo ST
-Ford;Mustang
+Ford;Mustang;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CMustang
 Ford;Mustang Mach-E
 Ford;Orion
 Ford;Probe
-Ford;Puma
+Ford;Puma;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CPuma
 Ford;Puma ST
 Ford;Ranchero
-Ford;Ranger
+Ford;Ranger;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CRanger
 Ford;Ranger (North America)
-Ford;S-MAX
+Ford;S-MAX;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CS-Max
 Ford;Scorpio
 Ford;Sierra
 Ford;Spectron
@@ -1091,9 +1091,11 @@ Ford;Tempo
 Ford;Territory
 Ford;Thunderbird
 Ford;Torino
+Ford;Tourneo;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CTourneo
 Ford;Tourneo Connect
 Ford;Tourneo Courier
 Ford;Tourneo Custom
+Ford;Transit;https://www.adesa.eu/ru/findcar?makesModels=Ford%2CTransit
 Ford;Transit Connect
 Ford;Transit Custom
 Ford;V8
