@@ -22,7 +22,8 @@ def add_parser_tasks():
             car=car,
             html_storage=html_storage,
         )
-        print(f'[Task created: {created}] {car} in sheduler {task}')
+        if created:
+            print(f'[Task created: {created}] {car} in sheduler {task}')
 
 
 def pull_numbers(bs):
