@@ -134,10 +134,10 @@ def parse_bunch(bunch):
         # Было в отдельной функции to_storage (to_sheduler)
         url_storage, created = UrlStorage.objects.get_or_create(
             external_url=url,
-            # Может стоит сделать поле необязательным?
-            car_model=bunch.url_bunch_storage.car_model,
         )
         if created:
+            url_storage.car_model = bunch.url_bunch_storage.car_model
+            url_storage.save()
             print(f'[INFO] Ссылка {url_storage.external_url}({url_storage.id}) добавлена в хранилище')
         # else:
         #     print(f'ссылка {url_storage.id} уже есть в хранилище')
