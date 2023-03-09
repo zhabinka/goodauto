@@ -53,8 +53,8 @@ def scrapy(limit=None):
 
             url_storage = UrlStorage.objects.get(external_url=url)
 
-            # TODO: Иногда краулер не успевает дождаться загрузки html и скачивает пустышку. Как решить эту проблему? Пока просто проверяю наличие блока cardetail-container:
-            if soup.find('section', class_=re.compile('cardetail-container')):
+            # TODO: Иногда краулер не успевает дождаться загрузки html и скачивает пустышку. Как решить эту проблему? Пока просто проверяю наличие блока useful_html:
+            if useful_html:
                 url_storage.processed = True
 
             with transaction.atomic():
