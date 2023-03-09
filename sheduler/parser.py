@@ -120,8 +120,9 @@ def parse(limit=None):
 def parse_bunches():
     for bunch in HtmlBunchStorage.objects.all():
         parse_bunch(bunch)
-        car_model=bunch.url_bunch_storage.car_model,
-        print(f'[Success] All cars {car_model[0]} processed')
+        # car_model=bunch.url_bunch_storage.car_model,
+        # print(f'[Success] All cars {car_model[0]} processed')
+    print(f'[Success] All bunches processed')
 
 
 def parse_bunch(bunch):
