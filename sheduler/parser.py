@@ -35,6 +35,7 @@ def parse(limit=None):
 
     for task in tasks:
         car = Car.objects.get(id=task.car.id)
+        print(f'[PROCESS] Parse {car.url_storage.external_url}')
         html_storage = HtmlStorage.objects.get(id=task.html_storage.id)
         soup = BeautifulSoup(html_storage.source_html, 'lxml')
         # TODO: Учитывать статус аукциона (закрыт, продан)
