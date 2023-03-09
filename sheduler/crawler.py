@@ -23,7 +23,8 @@ def add_crawler_tasks():
         task, created = CrawlerFrontier.objects.get_or_create(
             url_storage=car_url,
         )
-        print(f'[{created}] {url} in sheduler {task}')
+        if created:
+            print(f'[{created}] {url} in sheduler {task}')
 
 
 def scrapy(limit=None):
