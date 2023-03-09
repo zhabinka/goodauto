@@ -19,6 +19,8 @@ class UrlStorage(models.Model):
     car_model = models.ForeignKey(
         CarModel,
         on_delete=models.CASCADE,
+        null=True,
+        blank=True,
     )
 
     class Meta:
