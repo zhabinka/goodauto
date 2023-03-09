@@ -33,10 +33,11 @@ def scrapy(limit=None):
 
     try:
         for task in tasks:
-            time.sleep(random.randint(3, 6))
             url = task.url_storage.external_url
             driver.get(url=url)
             time.sleep(random.randint(10, 20))
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(random.randint(3, 6))
 
             html_storage, _ = HtmlStorage.objects.get_or_create(
                 url_storage=task.url_storage
@@ -88,6 +89,7 @@ def scrapy_bunch(bunch):
             time.sleep(random.randint(8, 10))
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
+            time.sleep(random.randint(2, 5))
             soup = BeautifulSoup(driver.page_source, 'lxml')
             useful_html = soup.find('div', class_='rc-CarsResultList')
             html.append(str(useful_html))
