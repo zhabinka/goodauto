@@ -45,7 +45,7 @@ def parse(limit=None):
             name, *_ = h1.text.split(' - ')
             car.name = name
             price_block = soup.find('div', class_='rc-BiddingAdvisorPanel')
-            if price_block :
+            if price_block:
                 car.price =  pull_numbers(price_block.find('div', class_='col'))
             # external_id = soup.select('div[class*=uitest-refnr]')
             # car.external_id = pull_numbers(external_id.text)
@@ -64,7 +64,9 @@ def parse(limit=None):
             # car.co2_emission = co2_emission.text
 
             car.power = soup.find('div', {'data-attr': 'car-kw'}).text
-            car.engine_size = soup.find('div', {'data-attr': 'car-engine'}).text
+            engine_size = soup.find('div', {'data-attr': 'car-engine'})
+            if engine_size:
+                car.engine_size = engine_size.text
             car.body_type = soup.find('div', {'data-attr': 'car-body'}).text
             doors_count_raw = soup.find('div', {'data-attr': 'car-doors'})
             car.doors = pull_numbers(doors_count_raw)
