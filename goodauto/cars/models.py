@@ -31,29 +31,29 @@ class Car(models.Model):
     drivable = models.TextField(null=True, blank=True)
 
     model_year = models.PositiveSmallIntegerField(null=True, blank=True,)
-    first_registration = models.CharField(null=True, blank=True, max_length=20)
+    first_registration = models.CharField(null=True, blank=True, max_length=100)
     mileage = models.DecimalField(null=True, blank=True, max_digits=7, decimal_places=0)
 
     # choice
-    fuel_type = models.CharField(null=True, blank=True, max_length=20)
+    fuel_type = models.CharField(null=True, blank=True, max_length=100)
     transmission_type = models.CharField(null=True, blank=True, max_length=50)
-    four_wheel_drive = models.CharField(null=True, blank=True, max_length=20)
+    four_wheel_drive = models.CharField(null=True, blank=True, max_length=100)
     co2_emission_standard = models.CharField(null=True, blank=True, max_length=10)
 
-    co2_emission = models.CharField(null=True, blank=True, max_length=20)
-    power = models.CharField(null=True, blank=True, max_length=20)
-    engine_size = models.CharField(null=True, blank=True, max_length=20)
-    body_type = models.CharField(null=True, blank=True, max_length=20)
+    co2_emission = models.CharField(null=True, blank=True, max_length=100)
+    power = models.CharField(null=True, blank=True, max_length=100)
+    engine_size = models.CharField(null=True, blank=True, max_length=100)
+    body_type = models.CharField(null=True, blank=True, max_length=100)
     doors_count =  models.PositiveSmallIntegerField(null=True, blank=True)
     seats_count = models.PositiveSmallIntegerField(null=True, blank=True)
     keys_count = models.PositiveSmallIntegerField(null=True, blank=True)
-    paint = models.CharField(null=True, blank=True, max_length=20)
-    interior_colour = models.CharField(null=True, blank=True, max_length=20)
+    paint = models.CharField(null=True, blank=True, max_length=100)
+    interior_colour = models.CharField(null=True, blank=True, max_length=100)
 
     # choice
-    vat = models.CharField(null=True, blank=True, max_length=20)
-    registration_documents = models.CharField(null=True, blank=True, max_length=20)
-    coc = models.CharField(null=True, blank=True, max_length=20)
+    vat = models.CharField(null=True, blank=True, max_length=100)
+    registration_documents = models.CharField(null=True, blank=True, max_length=100)
+    coc = models.CharField(null=True, blank=True, max_length=100)
 
     # choice
     pickup_location = models.CharField(null=True, blank=True, max_length=255)
