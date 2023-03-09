@@ -36,7 +36,7 @@ class Car(models.Model):
 
     # choice
     fuel_type = models.CharField(null=True, blank=True, max_length=100)
-    transmission_type = models.CharField(null=True, blank=True, max_length=50)
+    transmission_type = models.CharField(null=True, blank=True, max_length=100)
     four_wheel_drive = models.CharField(null=True, blank=True, max_length=100)
     co2_emission_standard = models.CharField(null=True, blank=True, max_length=10)
 
