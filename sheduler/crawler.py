@@ -52,7 +52,10 @@ def scrapy(limit=None):
             print(f'[INFO] Downloaded html from {url}')
 
             url_storage = UrlStorage.objects.get(external_url=url)
-            url_storage.processed = True
+
+            # TODO: Иногда краулер не успевает дождаться загрузки html и скачивает пустышку. Как решить эту проблему? Пока просто проверяю на наличие h1:
+            if soup.find('h1'):
+                url_storage.processed = True
 
             with transaction.atomic():
                 task.delete()
