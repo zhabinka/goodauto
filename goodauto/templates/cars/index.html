@@ -1,4 +1,5 @@
 <h2>Список авто</h2>
 {% for car in cars %}
-<p>[{{ car.id }}] {{ car.name }}, цена {{ car.price }} (<a href='{{ car.url_storage.external_url }}'>ссылка</a>)</p>
+<p>[{{ car.id }}] {{ car.name }}, цена {{ car.price }} <a href="{% url 'cars:detail' car.id %}">Подробнее</a>
+<br></p>
 {% endfor %}

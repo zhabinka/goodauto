@@ -1,6 +1,6 @@
 from django.shortcuts import render
 # from django.contrib.auth import get_user_model
-# from django.views.generic import ListView
+from django.views.generic import DetailView
 
 from goodauto.cars.models import Car, UrlStorage
 
@@ -18,6 +18,11 @@ def to_storage(html_storage):
         car_model=html_storage.url_storage.car_model
     )
     return item
+
+
+class CarDetail(DetailView):
+    model = Car
+    template_name = 'cars/detail.html'
 
 
 def remove_closed_car_urls():

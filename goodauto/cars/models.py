@@ -72,3 +72,6 @@ class Car(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+    def get_fields(self):
+        return [(field.name, field.value_to_string(self)) for field in Car._meta.fields]

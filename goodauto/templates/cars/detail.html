@@ -1,0 +1,6 @@
+<h2>{{ car.name }}</h2>
+<a href='{{ car.url_storage.external_url }}'>{{ car.url_storage.external_url }}</a><br><br>
+
+{% for option, value in car.get_fields %}
+	[{{ option }}] {{ value }}<br>
+{% endfor %}
