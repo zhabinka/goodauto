@@ -1,2 +1,40 @@
 # Настройка пользователя, ssh-доступа
 # https://hostgeek.ru/manuals/49-nachalnaja-nastrojka-servera-ubuntu-2004.html
+
+
+sudo service nginx status
+sudo lsof -nP -i | grep LISTEN
+
+ll /var/run/
+cat /var/run/nginx.pid
+
+cat /etc/nginx/nginx.conf
+
+# Протестировать конфигурацию
+sudo service nginx configtest
+sudo nginx -t
+
+sudo journalctl -u gunicorn --tail
+journalctl -u gunicorn.service
+sudo journalctl -u gunicorn.socket
+
+ps aux | grep gunicorn
+
+namei -nom /home/sammy/myproject/myproject.sock
+
+# Проверяем файл сокета
+# Такой вывод считается правильным: /run/gunicorn.sock: socket
+file /run/gunicorn.sock
+
+sudo cat /var/log/syslog | tail -20
+sudo tail -f /var/log/syslog
+
+# Добавил права на директорию пользователя chess
+chmod o+rx /home/chess
+
+# Изменил путь к сокету
+/home/chess/www/goodauto.by/gunicorn.socket
+
+# Добавил файл .env с переменными окружения
+
+# Добавить ALLOWED_HOSTS

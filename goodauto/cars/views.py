@@ -1,6 +1,7 @@
 from django.shortcuts import render
 # from django.contrib.auth import get_user_model
 from django.views.generic import DetailView
+from django.http import HttpResponse
 
 from goodauto.cars.models import Car, UrlStorage
 
@@ -35,3 +36,18 @@ def remove_closed_car_urls():
         removed_car_ids.append((model, id))
         print(f'[SUCCES] Car {model} ({id}) has removed')
     return removed_car_ids
+
+
+def test(request):
+    # request.headers['Host'] = '100.0.0.0:8080'
+    context = {
+        'meta': request.META,
+        'headers': request.headers,
+    }
+    return render(request, 'cars/headers.html', context)
+    # return HttpResponse('hello ' + request.get_host() +
+    #                     ' ' + request.method +
+    #                     ' ' + str(request.COOKIES) +
+    #                     ' ' + str(request.content_params) +
+    #                     ' ' + str(request.META) +
+    #                     ' ' + str(request.headers))

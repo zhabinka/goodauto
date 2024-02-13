@@ -7,11 +7,11 @@
     - ./group_vars/all.yml
 
   tasks:
-    - name: Create cron logs dir
-      file:
-        path: "{{ cron_logs_path }}"
-        state: file
-        recurse: yes
+    # - name: Create cron logs dir
+    #   file:
+    #     path: "{{ cron_logs_path }}"
+    #     state: file
+    #     recurse: yes
 
     - name: Start cron services
       systemd:
@@ -24,4 +24,5 @@
     - name: Run django cron
       cron:
         name: Record the current time
+        # minute: 1
         job: "date >> {{ cron_logs_path }}; {{ python_path }} {{ site_path }}/manage.py runcrons 2>&1 >> {{ cron_logs_path }}"
